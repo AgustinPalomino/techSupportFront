@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+
+.main-container {
+    margin-top: 20px;
+}
+
+body {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("assets/img/fondo-5.jpg");
+    font-family: Open Sans, "Helvetica Neue", sans-serif;
+}
+
+
+/* Animaciones */
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.right {
+    float: right;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

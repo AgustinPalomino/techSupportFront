@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="assets/iconografia/logosumset.png" alt="" width="45" height="37">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" aria-current="page" [routerLink]="['home']">Home</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['casos']">Casos</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['soporte']">Soporte</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                      Parametrización
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Empresa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" [routerLink]="['usuarios']">Usuarios</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['referencias']">Referencias</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <img width="20" HSPACE="20" VSPACE="10" style=border:50px src="assets/iconografia/alertaicono2.png" />
+            <a> admin
+                <img width="20" HSPACE="20" VSPACE="10" src="assets/iconografia/usuarioicono1.png" />  
+            </a>
+            <a routerLink="/login">
+                <img width="20" HSPACE="20" VSPACE="10" src="assets/iconografia/saliricono.png" />
+            </a>
+        </div>
+    </div>
+</nav>
