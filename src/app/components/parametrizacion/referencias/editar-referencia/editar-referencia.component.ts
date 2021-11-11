@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-referencias',
-  templateUrl: './referencias.component.html'
+  selector: 'app-editar-referencia',
+  templateUrl: './editar-referencia.component.html'
 })
-export class ReferenciasComponent implements OnInit {
+export class EditarReferenciaComponent implements OnInit {
 
   constructor() { }
 

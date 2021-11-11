@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'app-referencias',
-  templateUrl: './referencias.component.html'
+  selector: 'app-crear-usuario',
+  templateUrl: './crear-usuario.component.html'
 })
-export class ReferenciasComponent implements OnInit {
+export class CrearUsuarioComponent implements OnInit {
 
   constructor() { }
 

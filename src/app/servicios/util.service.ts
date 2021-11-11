@@ -11,7 +11,7 @@ export class UtilService {
 
   referencias: Referencia [] = [];
 
-  constructor(  private _location: Location, private route:Router, public apiService: AplicacionService ) { }
+  constructor( private _location: Location, private route:Router, public apiService: AplicacionService ) { }
 
   paginaAnterior() {
     this._location.back();

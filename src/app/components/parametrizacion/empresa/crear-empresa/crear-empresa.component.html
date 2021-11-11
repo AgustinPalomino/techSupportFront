@@ -1,0 +1,40 @@
+<div class="card" style="border-radius: 10px 10px 0 0;">
+    <h2 class="card-header letravino">Crear Empresa
+        <div class="float-right letravino">
+            <button class="btn btn-info mr-1">
+            <i class="fa fa-home"></i>
+          </button>
+            <button class="btn btn-info mr-1">
+            <i class="fa fa-reply"></i>
+          </button>
+        </div>
+    </h2>
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="guardarEmpresa(f)" #f="ngForm">
+            <div class="col-md-12 form-group">
+                <label class="form-label">Nombre de la Empresa</label>
+                <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn"> es requerido</span>
+                <input type="text" class="form-control" placeholder="Ingrese el Nombre de la empresa" [(ngModel)]="empresa.empNombre" name="nombre" required minlength="6">
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label">Dirección</label>
+                <span *ngIf="f.submitted && f.controls['direccion'].errors" class="text-danger animated fadeIn"> es requerida</span>
+                <input type="text" class="form-control" placeholder="Ingrese la dirección" [(ngModel)]="empresa.empDireccion" name="direccion" required minlength="6">
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label">Logo de Empresa</label>
+                <span *ngIf="f.submitted && f.controls['power'].errors" class="text-danger animated fadeIn"> es requerida</span>
+                <input type="text" class="form-control" placeholder="Ingrese dirección de Power BI" [(ngModel)]="empresa.empLogo" name="logo">
+            </div>
+            <div class="col-12">
+                <br>
+                <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-success">
+              Guardar
+              <i class="fa fa-save"></i>
+          </button>
+                <button routerLink="/empresa" style="margin-left: 25%; width: 150px;" class="btn btn-success">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+</div>

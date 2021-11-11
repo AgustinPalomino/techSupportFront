@@ -7,6 +7,12 @@ import { ParametrizacionComponent } from './components/parametrizacion/parametri
 import { EmpresaComponent } from './components/parametrizacion/empresa/empresa.component';
 import { ReferenciasComponent } from './components/parametrizacion/referencias/referencias.component';
 import { UsuariosComponent } from './components/parametrizacion/usuarios/usuarios.component';
+import { CrearEmpresaComponent } from './components/parametrizacion/empresa/crear-empresa/crear-empresa.component';
+import { EditarEmpresaComponent } from './components/parametrizacion/empresa/editar-empresa/editar-empresa.component';
+import { CrearReferenciaComponent } from './components/parametrizacion/referencias/crear-referencia/crear-referencia.component';
+import { EditarReferenciaComponent } from './components/parametrizacion/referencias/editar-referencia/editar-referencia.component';
+import { CrearUsuarioComponent } from './components/parametrizacion/usuarios/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from './components/parametrizacion/usuarios/editar-usuario/editar-usuario.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -16,6 +22,12 @@ const APP_ROUTES: Routes = [
     { path: 'empresa', component: EmpresaComponent },
     { path: 'referencias', component: ReferenciasComponent },
     { path: 'usuarios', component: UsuariosComponent },
+    { path: 'crear-empresa', component: CrearEmpresaComponent },
+    { path: 'editar-empresa', component: EditarEmpresaComponent },
+    { path: 'crear-referencia', component: CrearReferenciaComponent },
+    { path: 'editar-referencia', component: EditarReferenciaComponent },
+    { path: 'crear-usuario', component: CrearUsuarioComponent },
+    { path: 'editar-usuario', component: EditarUsuarioComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

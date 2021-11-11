@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Empresa } from '../modelos/empresa';
 
 /**
  * Clase que expone servicios de la aplicación
@@ -25,6 +26,11 @@ export class AplicacionService {
   //GET que realiza el consumo que trae la lista de todas las Empresas
   traerTodasEmpresas():Observable<any> {
     return this.http.get<any>(this.urlEndPoint+'empresa')
+  }
+
+  //POST para registrar una Empresa
+  guardarEmpresa(empresa: Empresa) {
+    return this.http.post<any>(this.urlEndPoint+'empresa', empresa)
   }
 
   
