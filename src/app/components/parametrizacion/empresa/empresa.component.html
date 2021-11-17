@@ -1,1 +1,56 @@
-<p>empresa works!</p>
+<div class="card" style="border-radius: 15px 15px 0 0;">
+    <h2 class="card-header letraverde">Empresa
+        <div class="float-right letraverde">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
+    </h2>
+    <div class="card-body">
+        <!-- <legend class="w-auto letraverde">Buscar Empresa</legend>
+      <hr> -->
+        <form class="row g-3">
+            <!-- <ng-container *ngxPermissionsOnly="['RO01']"> -->
+            <div class="col-12 d-flex justify-content-center">
+                <button routerLink="/crear-empresa" type="submit" class="btn btn-info btn m-2">Crear</button>
+            </div>
+            <!-- </ng-container> -->
+        </form><br>
+        <legend class="w-auto letravino">Lista de Empresas</legend>
+        <table class="table caption-top">
+            <thead style="background-color:#611b18; color: #fff;">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col" style="background-color: #611b18;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let empresa of empresa | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <th scope="row">{{ empresa.id }}</th>
+                    <td>{{ empresa.empNombre }}</td>
+                    <td>{{ empresa.empNit }}</td>
+                    <td>{{ empresa.empTelefono }}</td>
+                    <td>
+                        <!-- <ng-container *ngxPermissionsOnly="['RO01']"> -->
+                        <button (click)="eliminarEmpresa(empresa.id)" title="Eliminar" class="btn btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        <button title="Editar" class="btn btn-info ml-1" [routerLink]="['/editar-empresa', empresa.id]">
+                                <i class="fa fa-pen"></i>
+                            </button>
+                        <!-- </ng-container> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="page = $event" [autoHide]="true" [responsive]="true" [maxSize]=10 screenReaderPageLabel="página" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+        <!-- maxSize: Número máximo de páginas -->
+    </div>
+</div>

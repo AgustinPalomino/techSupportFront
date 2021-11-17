@@ -6,7 +6,7 @@ export class Casos {
     id!: number;
     casFechaInicio!: Date;
     casTipo!: string;
-    casCategoria!: string;
+    casAtiende!: string;
     casSeveridad!: string;
     casSubject!: string;
     casDescripcion!: string;

@@ -1,1 +1,53 @@
-<p>usuarios works!</p>
+<div class="card" style="border-radius: 15px 15px 0 0;">
+    <h2 class="card-header letraverde">Usuarios
+        <div class="float-right letraverde">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
+    </h2>
+    <div class="card-body">
+        <form class="row g-3">
+            <div class="col-12 d-flex justify-content-center">
+                <button routerLink="/crear-usuario" type="submit" class="btn btn-info btn m-2">Crear</button>
+            </div>
+        </form><br>
+        <legend class="w-auto letraverde">Lista de Usuarios</legend>
+        <table class="table caption-top">
+            <thead style="background-color:#611b18; color: #fff;">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Alias</th>
+                    <th scope="col">Mail</th>
+                    <th scope="col" style="background-color: #611b18;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuario | paginate: { itemsPerPage: 6, currentPage: page }">
+                    <th scope="row">{{ usuario.id }}</th>
+                    <td>{{ usuario.usrNombre }}</td>
+                    <td>{{ usuario.usrAlias }}</td>
+                    <td>{{ usuario.usrMail }}</td>
+                    <td>
+                        <button title="Ver más..." class="btn btn-info mr-1" [routerLink]="['/ver-usuario', usuario.id]">
+                    <i class="fa fa-eye"></i>
+                  </button>
+                        <button title="Editar" class="btn btn-info mr-1" [routerLink]="['/editar-usuario', usuario.id]">
+                    <i class="fa fa-pen"></i>
+                  </button>
+                        <button (click)="eliminarUsuario(usuario.id)" title="Eliminar" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="page = $event" [autoHide]="true" [responsive]="true" [maxSize]=10 screenReaderPageLabel="página" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+        <!-- maxSize: Número máximo de páginas -->
+    </div>
+</div>

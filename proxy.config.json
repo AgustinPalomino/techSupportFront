@@ -1,0 +1,7 @@
+{
+    "/home/*": {
+
+        "secure": false,
+        "changeOrigin": true
+    }
+}

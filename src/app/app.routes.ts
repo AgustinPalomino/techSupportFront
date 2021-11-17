@@ -27,7 +27,7 @@ const APP_ROUTES: Routes = [
     { path: 'crear-referencia', component: CrearReferenciaComponent },
     { path: 'editar-referencia', component: EditarReferenciaComponent },
     { path: 'crear-usuario', component: CrearUsuarioComponent },
-    { path: 'editar-usuario', component: EditarUsuarioComponent },
+    { path: 'editar-usuario/:Id', component: EditarUsuarioComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

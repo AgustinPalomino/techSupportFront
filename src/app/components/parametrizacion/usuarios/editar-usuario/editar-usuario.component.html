@@ -1,1 +1,56 @@
-<p>editar-usuario works!</p>
+<div class="card" style="border-radius: 15px 15px 0 0;">
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Editar Usuario
+        <div class="float-right letraverde">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+              <i class="fa fa-home"></i>
+            </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+              <i class="fa fa-reply"></i>
+            </button>
+        </div>
+    </h5>
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="guardarUsuario(f)" #f="ngForm">
+            <div class="col-md-4 form-group">
+                <label class="form-label">Alias</label>
+                <input type="text" class="form-control" [(ngModel)]="usuario.usrAlias" name="alias" required>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="form-label">Clave</label>
+                <input type="text" class="form-control" [(ngModel)]="usuario.usrClave" name="clave" required>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" [(ngModel)]="usuario.usrMail" name="mail">
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="usuario.usrNombre" name="nombre">
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="form-label">Rol</label>
+                <select class="form-control" name="refCod" id="refCod" required [(ngModel)]="usuario.usrRol">
+                    <option *ngFor="let codigo of codigos" [value]="codigo.valor">
+                      {{ codigo.etiqueta }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <label class="form-label">Empresa</label>
+                <select class="form-control" name="refSelect" id="refSelect" required [(ngModel)]="usuario.usrEmpId">
+                    <option [value]="" *ngFor="let empresa of empresas" [value]="empresa.valor">
+                      {{ empresa.etiqueta }}
+                    </option>
+                </select>
+            </div>
+            <div class="col-12">
+                <br>
+                <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Guardar
+                    <i class="fa fa-save"></i>
+                </button>
+                <button routerLink="/usuarios" style="margin-left: 25%; width: 150px;" class="btn btn-info">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

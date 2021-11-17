@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Empresa } from 'src/app/modelos/empresa';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import Swal from 'sweetalert2';
+import { UtilService } from '../../../../servicios/util.service';
 
 
 /**
@@ -20,7 +21,7 @@ export class CrearEmpresaComponent implements OnInit {
 
   empresa = new Empresa;
 
-  constructor(private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
+  constructor( public util: UtilService, private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
   }
@@ -33,10 +34,11 @@ export class CrearEmpresaComponent implements OnInit {
         text: 'NO se actualizó correctamente',
         icon: 'error'
       });
-      //this.traductor.mensajeError();
       return;
     }
+    console.log(this.empresa);
     this.apiService.guardarEmpresa(this.empresa).subscribe(res => {
+      console.log('Respuesta: ', res);
       Swal.fire({
         title: 'Espere',
         text: 'Guardando información',
@@ -44,14 +46,21 @@ export class CrearEmpresaComponent implements OnInit {
         allowOutsideClick: false
       });
       Swal.showLoading();
-      if (res.codigoRespuesta == 200) {
-        //this.traductor.mensajeOk;
+      if (res != null || res != undefined) {
+        console.log('Entré')
         Swal.fire({
-          title: "Empresa",
-          text: 'se actualizó correctamente',
-          icon: 'success'
+         title: "Empresa",
+         text: 'se actualizó correctamente',
+         icon: 'success'
         });
-        this.router.navigate(['/crear-empresa'])
+        this.router.navigate(['crear-empresa'])
+      } else {
+        Swal.showLoading();
+        Swal.fire({
+          title: "Registro",
+          text: 'NO se actualizó correctamente',
+          icon: 'error'
+        });
       }
     });
   }

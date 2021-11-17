@@ -6,7 +6,8 @@
  export class Empresa {
     id!: number;
     empNombre!: string;
-    empDireccion!: string;
+    empNit!: string;
+    empTelefono!: string;
     empLogo!: number;
     
 }

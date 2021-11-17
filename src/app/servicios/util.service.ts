@@ -3,6 +3,8 @@ import { Referencia } from 'src/app/modelos/referencia';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AplicacionService } from './aplicacion.service';
+import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +27,14 @@ export class UtilService {
     let username = null;
     sessionStorage.clear();
     localStorage.clear();
+  }
+
+  estaAutenticado(): boolean {
+    if (sessionStorage.getItem('email') != null) {
+        return true;
+      } else {
+        return false;
+      }
   }
   
   
