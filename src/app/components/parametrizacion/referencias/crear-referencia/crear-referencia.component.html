@@ -1,1 +1,53 @@
-<p>crear-referencia works!</p>
+<div class="card d-flex justify-content-center" style="border-radius: 15px 15px 0 0;">
+    <h5 class="card-header letravino">Lista de {{ nombrePadre }}
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
+    </h5>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table caption-top">
+                <thead style="background-color:#611b18; color: #fff;">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col" style="background-color: #611b18;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let referencia of referencias | paginate: { itemsPerPage: 6, currentPage: page }">
+                        <th scope="row">{{ referencia.id }}</th>
+                        <td>{{ referencia.refNombre }}</td>
+                        <td>{{ referencia.refCodigo }}</td>
+                        <td>{{ referencia.refDescripcion }}</td>
+                        <td>
+                            <button title="Editar" class="btn btn-info mr-1" [routerLink]="['/editar-regla', referencia.id]">
+                                <i class="fa fa-pen"></i>
+                            </button>
+                            <!-- <button (click)="eliminarRegla(referencia.id)" title="Eliminar" class="btn btn-danger">
+                                 <i class="fa fa-trash"></i>
+                            </button> -->
+                            <button *ngIf="referencia.refRefCodigo === 'G00'" [routerLink]="['/crear-reglas-la', referencia.refCodigo]" title="Ver Reglas" class="btn btn-info mr-1">
+                                    <i class="fa fa-list"></i>
+                            </button>
+                            <button *ngIf="referencia.refRefCodigo === 'G00'" [routerLink]="['/crear-hijos', referencia.refCodigo]" title="Agregar Regla" class="btn btn-info">
+                                <i class="fa fa-plus"></i>
+                             </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pagination-controls (pageChange)="page = $event" [autoHide]="true" [responsive]="true" [maxSize]=10 screenReaderPageLabel="página" previousLabel="Anterior" nextLabel="Siguiente">
+        </pagination-controls>
+        <!-- maxSize: Número máximo de páginas -->
+        <button [routerLink]="['/crear-hijos', cod]" style="margin-left: 48%;" type="submit" class="btn btn-info botonCentrado">Crear</button>
+    </div>
+</div>

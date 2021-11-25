@@ -13,6 +13,8 @@ import { CrearReferenciaComponent } from './components/parametrizacion/referenci
 import { EditarReferenciaComponent } from './components/parametrizacion/referencias/editar-referencia/editar-referencia.component';
 import { CrearUsuarioComponent } from './components/parametrizacion/usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './components/parametrizacion/usuarios/editar-usuario/editar-usuario.component';
+import { CrearHijosComponent } from './components/parametrizacion/referencias/crear-referencia/crear-hijos/crear-hijos.component';
+import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -28,6 +30,8 @@ const APP_ROUTES: Routes = [
     { path: 'editar-referencia', component: EditarReferenciaComponent },
     { path: 'crear-usuario', component: CrearUsuarioComponent },
     { path: 'editar-usuario/:Id', component: EditarUsuarioComponent },
+    { path: 'crear-hijos/:codRef', component: CrearHijosComponent },
+    { path: 'caso-soft', component: CasoSoftComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

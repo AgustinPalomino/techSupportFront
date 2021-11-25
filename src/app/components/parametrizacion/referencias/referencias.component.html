@@ -1,1 +1,31 @@
-<p>referencias works!</p>
+<div class="card" style="border-radius: 15px 15px 0 0;">
+    <h5 class="card-header letravino">
+        Referencias
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
+    </h5>
+    <div class="card-body">
+
+        <ul class="list-group list-group-horizontal-md">
+            <a routerLink="/crear-referencia/R00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Roles</a>
+            <a routerLink="/crear-referencia/TU00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Tipo de Usuario</a>
+            <a routerLink="/crear-referencia/C00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Categoria Caso</a>
+        </ul>
+        <ul class="list-group list-group-horizontal-md">
+            <a routerLink="/crear-referencia/U00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Ubicación</a>
+            <a routerLink="/crear-referencia/E00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Estados del Ticket</a>
+            <a routerLink="/crear-referencia/CS00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Tipos Software</a>
+        </ul>
+        <ul class="list-group list-group-horizontal-md">
+            <a routerLink="/crear-referencia/CA00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Tipos Administrativo</a>
+            <a routerLink="/crear-referencia/CH00" style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action">Tipos Hardware</a>
+            <a style="border-color:#611b18;border-style: solid;" class="list-group-item list-group-item-action"></a>
+        </ul>
+    </div>
+</div>

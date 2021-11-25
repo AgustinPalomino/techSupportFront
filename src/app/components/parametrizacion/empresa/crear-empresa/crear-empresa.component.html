@@ -10,7 +10,7 @@
         </div>
     </h5>
     <div class="card-body">
-        <form class="row g-3" (ngSubmit)="guardarEmpresa(f)" #f="ngForm">
+        <form class="row g-3" (ngSubmit)="guardarEmpresa(f)" #f="ngForm" enctype="multipart/form-data">
             <div class="col-md-12 form-group">
                 <label class="form-label">Nombre de la Empresa</label>
                 <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn"> es requerido</span>
@@ -23,15 +23,21 @@
             </div>
             <div class="col-md-12 form-group">
                 <label class="form-label">Logo de Empresa</label>
-                <input type="text" class="form-control" [(ngModel)]="empresa.empLogo" name="logo">
+                <input (change)="capturarFile($event)" type="file" class="form-control" [(ngModel)]="empresa.empLogo" name="logo">
+            </div>
+            <div *ngIf="previsualizacion">
+                <img width="120px" [src]="previsualizacion" alt="">
             </div>
             <div class="col-12">
                 <br>
                 <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-info">
-              Guardar
-              <i class="fa fa-save"></i>
-          </button>
-                <button routerLink="/empresa" style="margin-left: 25%; width: 150px;" class="btn btn-info">Cancelar</button>
+                    Guardar
+                <i class="fa fa-save"></i>
+                </button>
+                <button routerLink="/empresa" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Cancelar
+                    <i class="fas fa-ban"></i>
+                </button>
             </div>
         </form>
     </div>

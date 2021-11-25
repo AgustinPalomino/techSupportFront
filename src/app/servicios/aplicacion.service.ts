@@ -74,4 +74,14 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+'usuario', id)
   }
 
+   //GET que realiza el consumo que trae todos los padres en referencia
+   traerRefPadre() {
+    return this.http.get<any>(this.urlEndPoint+'ref/refpad')
+  }
+
+  //POST para registrar una referencia
+  guardarReferencia(ref: Referencia) {
+    return this.http.post<any>(this.urlEndPoint+'ref/guardar', ref)
+  }
+
 }

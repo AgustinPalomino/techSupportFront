@@ -1,0 +1,62 @@
+<div class="card" style="border-radius: 10px 10px 0 0;">
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+            <i class="fa fa-home"></i>
+          </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+            <i class="fa fa-reply"></i>
+          </button>
+        </div>
+    </h5>
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="guardarCaso(f)" #f="ngForm" name="fcaso" enctype="multipart/form-data">
+            <div class="col-md-12 form-group">
+                <h6 class="letravino">Tipo de Software</h6><br>
+                <div class="container">
+                    <mat-radio-group name="tipo" [(ngModel)]="caso.casTipo">
+                        <mat-radio-button *ngFor="let tipo of tipos" [value]="tipo.valor" style="margin: 15px">
+                            {{tipo.etiqueta}}
+                        </mat-radio-button>
+                    </mat-radio-group><hr>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <h6 class="letravino">Severidad</h6><br>
+                <div class="container">
+                    <mat-radio-group name="tipo" [(ngModel)]="caso.casSeveridad">
+                        <mat-radio-button *ngFor="let sev of severidads" [value]="sev.valor" style="margin: 15px">
+                            {{sev.etiqueta}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label" style="color: black;">Subject</label>
+                <span *ngIf="f.submitted && f.controls['subject'].errors" class="text-danger animated fadeIn"> es requerido</span>
+                <input type="text" class="form-control" placeholder="Ingrese el Subject" [(ngModel)]="caso.casSubject" name="subject" required minlength="10">
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label" style="color: black;">Descripción</label>
+                <span *ngIf="f.submitted && f.controls['descripcion'].errors" class="text-danger animated fadeIn"> es requerida</span>
+                <input type="text" class="form-control" placeholder="Ingrese la Descripción" [(ngModel)]="caso.casDescripcion" name="descripcion" required>
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label" style="color: black;">Adjuntos</label>
+                <input (change)="capturarFile($event)" type="file" class="form-control" [(ngModel)]="caso.casAdjuntos" name="adjuntos">
+            </div>
+            <div class="col-12">
+                <br>
+                <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Guardar
+                    <i class="fa fa-save"></i>
+                </button>
+                <button routerLink="/empresa" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Cancelar
+                    <i class="fas fa-ban"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

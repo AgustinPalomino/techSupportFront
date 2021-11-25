@@ -9,14 +9,19 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-casos',
-  templateUrl: './casos.component.html',
-  styleUrls: ['./casos.component.scss']
+  templateUrl: './casos.component.html'
 })
 export class CasosComponent implements OnInit {
+
+  banderaS : boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public banderasoft() {
+    this.banderaS = true;
   }
 
 }

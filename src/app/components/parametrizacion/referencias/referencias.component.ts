@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Referencia } from 'src/app/modelos/referencia';
+import { AplicacionService } from 'src/app/servicios/aplicacion.service';
+import { UtilService } from '../../../servicios/util.service';
 
 
 /**
@@ -13,9 +17,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReferenciasComponent implements OnInit {
 
-  constructor() { }
+  aplicacionService: AplicacionService | undefined;
+  codRef: any;
+
+  referencias: Referencia [] = [];
+
+  navegarCrearRegla() {
+    this.router.navigate(['/crear-reglas', this.codRef])
+  }
+  
+  constructor( public util: UtilService, private router: Router, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
+    
   }
 
 }

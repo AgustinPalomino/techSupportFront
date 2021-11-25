@@ -1,0 +1,43 @@
+<div class="card" style="border-radius: 15px 15px 0 0;">
+    <h2 class="card-header letravino">Agregar a {{ nombrePadre }}
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+              <i class="fa fa-home"></i>
+            </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+              <i class="fa fa-reply"></i>
+            </button>
+        </div>
+    </h2>
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="guardarReferencia(f)" #f="ngForm">
+            <div class="col-md-6 form-group">
+                <label class="form-label">Código de Referencia</label>
+                <input type="text" class="form-control" placeholder="Ingrese el código" [(ngModel)]="referencia.refCodigo" name="codigo" required>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" placeholder="Ingrese el nombre" [(ngModel)]="referencia.refNombre" name="nombre" required>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">Descripción</label>
+                <input type="text" class="form-control" placeholder="Ingrese la descripción" [(ngModel)]="referencia.refDescripcion" name="descripcion" required>
+            </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">Valor</label>
+                <input type="text" class="form-control" placeholder="Ingrese el valor" [(ngModel)]="referencia.refValor" name="valor">
+            </div>
+            <div class="col-12">
+                <br>
+                <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Guardar
+                    <i class="fa fa-save"></i>
+                </button>
+                <button routerLink="/reglas" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Cancelar
+                    <i class="fas fa-ban"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

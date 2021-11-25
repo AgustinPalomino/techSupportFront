@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Empresa } from 'src/app/modelos/empresa';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
@@ -20,14 +21,18 @@ import { UtilService } from '../../../../servicios/util.service';
 export class CrearEmpresaComponent implements OnInit {
 
   empresa = new Empresa;
+  public archivo: any;
+  previsualizacion: string | undefined;
 
-  constructor( public util: UtilService, private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
+  constructor( private sanitizer: DomSanitizer, public util: UtilService, private router: Router, 
+      private http: HttpClient, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
   }
 
   guardarEmpresa( form: NgForm ) {
 
+    console.log(this.empresa);
     if( form.invalid ) {
       Swal.fire({
         title: "Registro",
@@ -36,6 +41,9 @@ export class CrearEmpresaComponent implements OnInit {
       });
       return;
     }
+    const formularioDeDatos = new FormData;
+    formularioDeDatos.append('this.empresa.empLogo', this.archivo);
+    //this.empresa.empLogo = formularioDeDatos;
     console.log(this.empresa);
     this.apiService.guardarEmpresa(this.empresa).subscribe(res => {
       console.log('Respuesta: ', res);
@@ -47,7 +55,6 @@ export class CrearEmpresaComponent implements OnInit {
       });
       Swal.showLoading();
       if (res != null || res != undefined) {
-        console.log('Entré')
         Swal.fire({
          title: "Empresa",
          text: 'se actualizó correctamente',
@@ -64,5 +71,40 @@ export class CrearEmpresaComponent implements OnInit {
       }
     });
   }
+
+  capturarFile(event: any): any {
+    const archivoCapturado = event.target.files[0];
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+      console.log(imagen);
+    })
+    this.archivo = this.previsualizacion;
+    // this.archivos.push(archivoCapturado); //captura varios archivos
+    // console.log(event.target.files);
+    
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve): any => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader;
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          blob: $event,
+          image,
+          base: reader.result
+        });
+      };
+        reader.onerror = error => {
+          resolve({
+            base: null
+          });
+        };
+    } catch (error) {
+      return null;
+    };
+  }) 
 
 }
