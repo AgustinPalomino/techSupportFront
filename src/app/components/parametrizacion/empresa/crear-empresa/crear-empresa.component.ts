@@ -21,8 +21,9 @@ import { UtilService } from '../../../../servicios/util.service';
 export class CrearEmpresaComponent implements OnInit {
 
   empresa = new Empresa;
-  public archivo: any;
+  public archivos: any = [];
   previsualizacion: string | undefined;
+  nombreArchivo: string = "";
 
   constructor( private sanitizer: DomSanitizer, public util: UtilService, private router: Router, 
       private http: HttpClient, public apiService: AplicacionService ) { }
@@ -31,7 +32,6 @@ export class CrearEmpresaComponent implements OnInit {
   }
 
   guardarEmpresa( form: NgForm ) {
-
     console.log(this.empresa);
     if( form.invalid ) {
       Swal.fire({
@@ -41,10 +41,7 @@ export class CrearEmpresaComponent implements OnInit {
       });
       return;
     }
-    const formularioDeDatos = new FormData;
-    formularioDeDatos.append('this.empresa.empLogo', this.archivo);
-    //this.empresa.empLogo = formularioDeDatos;
-    console.log(this.empresa);
+    
     this.apiService.guardarEmpresa(this.empresa).subscribe(res => {
       console.log('Respuesta: ', res);
       Swal.fire({
@@ -73,15 +70,17 @@ export class CrearEmpresaComponent implements OnInit {
   }
 
   capturarFile(event: any): any {
+    console.log('Entro a capturarFile');
     const archivoCapturado = event.target.files[0];
+    console.log(archivoCapturado.name);
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
       console.log(imagen);
     })
-    this.archivo = this.previsualizacion;
-    // this.archivos.push(archivoCapturado); //captura varios archivos
-    // console.log(event.target.files);
-    
+    this.archivos.push(archivoCapturado); //captura varios archivos
+    console.log(this.archivos[0].name);
+    //this.nombreArchivo = archivoCapturado.name;
+    this.nombreArchivo = this.archivos[0].name;
   }
 
   extraerBase64 = async ($event: any) => new Promise((resolve): any => {
@@ -106,5 +105,19 @@ export class CrearEmpresaComponent implements OnInit {
       return null;
     };
   }) 
+
+  subirArchivo(): any {
+    try {
+      const formularioDeDatos = new FormData;
+      this.archivos.forEach((archivo: string | Blob) => {
+        formularioDeDatos.append('files', archivo);
+      });
+      this.apiService.guardarAdjuntos(formularioDeDatos).subscribe(res => {
+        console.log('Respuesta del servidor', res);
+      })
+    } catch (error) {
+      console.log('Error al subir archivos: ',error);
+    }
+  }
 
 }

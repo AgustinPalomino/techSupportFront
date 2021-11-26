@@ -1,1 +1,48 @@
-<p>editar-empresa works!</p>
+<div class="card" style="border-radius: 10px 10px 0 0;">
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Editar Empresa
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+            <i class="fa fa-home"></i>
+          </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+            <i class="fa fa-reply"></i>
+          </button>
+        </div>
+    </h5>
+    <div class="card-body">
+        <form class="row g-3" (ngSubmit)="guardarEmpresa(f)" #f="ngForm" enctype="multipart/form-data">
+            <div class="col-md-12 form-group">
+                <label class="form-label">Nombre de la Empresa</label>
+                <span *ngIf="f.submitted && f.controls['nombre'].errors" class="text-danger animated fadeIn"> es requerido</span>
+                <input type="text" class="form-control" placeholder="Ingrese el Nombre de la empresa" [(ngModel)]="empresa.empNombre" name="nombre" required minlength="6">
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label">Nit</label>
+                <span *ngIf="f.submitted && f.controls['nit'].errors" class="text-danger animated fadeIn"> es requerido</span>
+                <input type="text" class="form-control" placeholder="Ingrese el Nit" [(ngModel)]="empresa.empNit" name="nit" required minlength="6">
+            </div>
+            <div class="col-md-12 form-group">
+                <label class="form-label">Logo de Empresa</label>
+                <input (change)="capturarFile($event)" type="file" class="form-control" [(ngModel)]="empresa.empLogo" name="logo">
+            </div>
+            <div>
+                <button type="button" (click)="subirArchivo()">Subir Archivo</button>
+            </div>
+            <div *ngIf="previsualizacion">
+                <img width="100px" [src]="previsualizacion" alt="">
+            </div>
+            <div class="col-12">
+                <br>
+                <button type="submit" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Guardar
+                <i class="fa fa-save"></i>
+                </button>
+                <button routerLink="/empresa" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+                    Cancelar
+                    <i class="fas fa-ban"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -25,8 +25,11 @@
                 <label class="form-label">Logo de Empresa</label>
                 <input (change)="capturarFile($event)" type="file" class="form-control" [(ngModel)]="empresa.empLogo" name="logo">
             </div>
+            <div>
+                <button type="button" (click)="subirArchivo()">Subir Archivo</button>
+            </div>
             <div *ngIf="previsualizacion">
-                <img width="120px" [src]="previsualizacion" alt="">
+                <img width="100px" [src]="previsualizacion" alt="">
             </div>
             <div class="col-12">
                 <br>

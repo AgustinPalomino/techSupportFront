@@ -25,7 +25,7 @@ const APP_ROUTES: Routes = [
     { path: 'referencias', component: ReferenciasComponent },
     { path: 'usuarios', component: UsuariosComponent },
     { path: 'crear-empresa', component: CrearEmpresaComponent },
-    { path: 'editar-empresa', component: EditarEmpresaComponent },
+    { path: 'editar-empresa/:id', component: EditarEmpresaComponent },
     { path: 'crear-referencia', component: CrearReferenciaComponent },
     { path: 'editar-referencia', component: EditarReferenciaComponent },
     { path: 'crear-usuario', component: CrearUsuarioComponent },

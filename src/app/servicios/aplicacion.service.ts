@@ -84,4 +84,9 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+'ref/guardar', ref)
   }
 
+  //POST para guardar archivo
+  guardarAdjuntos(form: FormData) {
+    return this.http.post<any>(this.urlEndPoint+'upload', form)
+  }
+
 }

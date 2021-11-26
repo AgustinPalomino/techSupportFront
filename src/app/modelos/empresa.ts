@@ -8,6 +8,6 @@
     empNombre!: string;
     empNit!: string;
     empTelefono!: string;
-    empLogo!: number;
+    empLogo!: string;
     
 }
