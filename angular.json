@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "cli": {
-      "analytics": "0fed9b73-8019-4257-b6ca-069ddb6419c3"
+        "analytics": "0fed9b73-8019-4257-b6ca-069ddb6419c3"
     },
     "version": 1,
     "newProjectRoot": "projects",
@@ -77,7 +77,8 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "techserv:build:production"
+                            "browserTarget": "techserv:build:production",
+                            "proxyConfig": "proxy.conf.json"
                         },
                         "development": {
                             "browserTarget": "techserv:build:development"

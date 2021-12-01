@@ -43,7 +43,6 @@ export class CrearEmpresaComponent implements OnInit {
     }
     
     this.apiService.guardarEmpresa(this.empresa).subscribe(res => {
-      console.log('Respuesta: ', res);
       Swal.fire({
         title: 'Espere',
         text: 'Guardando información',

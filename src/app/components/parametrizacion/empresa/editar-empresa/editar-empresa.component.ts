@@ -8,12 +8,10 @@ import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from 'src/app/servicios/util.service';
 import Swal from 'sweetalert2';
 
-
 /**
  * Componente para editar una Empresa
  * @author dev-sumset Agustín Palomino P. 
  */
-
 
 @Component({
   selector: 'app-editar-empresa',
@@ -57,7 +55,6 @@ export class EditarEmpresaComponent implements OnInit {
     }
     
     this.apiService.guardarEmpresa(this.empresa).subscribe(res => {
-      console.log('Respuesta: ', res);
       Swal.fire({
         title: 'Espere',
         text: 'Guardando información',
@@ -86,15 +83,12 @@ export class EditarEmpresaComponent implements OnInit {
   capturarFile(event: any): any {
     console.log('Entro a capturarFile');
     const archivoCapturado = event.target.files[0];
-    console.log(archivoCapturado.name);
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
-      console.log(imagen);
     })
     this.archivos.push(archivoCapturado); //captura varios archivos
     console.log(this.archivos[0].name);
-    //this.nombreArchivo = archivoCapturado.name;
-    this.nombreArchivo = this.archivos[0].name;
+    this.nombreArchivo = archivoCapturado.name;
   }
 
   extraerBase64 = async ($event: any) => new Promise((resolve): any => {

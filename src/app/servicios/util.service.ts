@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Referencia } from 'src/app/modelos/referencia';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { AplicacionService } from './aplicacion.service';
-import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -15,6 +14,8 @@ export class UtilService {
 
   constructor( private _location: Location, private route:Router, public apiService: AplicacionService ) { }
 
+  nombreUser$ = new EventEmitter<string>();
+  
   paginaAnterior() {
     this._location.back();
   }

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 // Rutas
 import { APP_ROUTING }  from './app.routes';
@@ -35,6 +36,7 @@ import { EditarUsuarioComponent } from './components/parametrizacion/usuarios/ed
 import { CrearHijosComponent } from './components/parametrizacion/referencias/crear-referencia/crear-hijos/crear-hijos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.component';
+import { LoginComponent } from './components/autenticacion/login/login.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.compon
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     CrearHijosComponent,
-    CasoSoftComponent
+    CasoSoftComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.compon
     MatInputModule,
     MatButtonModule,
     MatRadioModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgxPermissionsModule.forRoot(),
   ],
   exports: [ NgxPaginationModule ],
   providers: [

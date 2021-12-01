@@ -13,7 +13,7 @@ import { UtilService } from '../../../../servicios/util.service';
 
 
 /**
- * Componente para crear una Empresa
+ * Componente para editar un usuario
  * @author dev-sumset Agustín Palomino P. 
  */
 
@@ -41,6 +41,13 @@ export class EditarUsuarioComponent implements OnInit {
     this.listarEmpresas();
     this.obtenerCodigoRol();
     this.buscarUsuarioPorId(this.id);
+  }
+
+  buscarUsuarioPorId(cod: number) {
+    this.apiService.traerUsuarioPorId(cod).subscribe(res => {
+      let usuario = res as Usuarios
+      this.usuario = usuario;
+    });
   }
 
   guardarUsuario( form: NgForm ) {
@@ -114,14 +121,6 @@ export class EditarUsuarioComponent implements OnInit {
         })
       })
     })
-  }
-
-  buscarUsuarioPorId(cod: number) {
-    //this.usuario.id = cod;
-    this.apiService.traerUsuarioPorId(cod).subscribe(res => {
-      let usuario = res as Usuarios
-      this.usuario = usuario;
-    });
   }
 
 }

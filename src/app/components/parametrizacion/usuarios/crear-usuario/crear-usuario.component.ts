@@ -95,7 +95,6 @@ export class CrearUsuarioComponent implements OnInit {
   private obtenerCodigoRol() {
     this.fil.codRef = 'R00'; //******PENDIENTE FILTRAR POR EMPRESA SI ES NECESARIO */
     //this.fil.empId = Number(sessionStorage.getItem('empresa'));
-    console.log('EN ROL',this.fil.codRef);
     this.apiService.traerReferenciasPorCodigo(this.fil.codRef).subscribe(res =>{
       let codigos = res as Referencia[]
       codigos.forEach(codigo => {

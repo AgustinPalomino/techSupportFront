@@ -22,7 +22,7 @@ export class AplicacionService {
 
   //GET que realiza el consumo que trae la lista de todas las Referencias
   traerTodasReferencias():Observable<any> {    
-    return this.http.get<any>(this.urlEndPoint+'referencia')
+    return this.http.get<any>(this.urlEndPoint+'ref/obtenertodas')
   }
 
   //GET que realiza el consumo que trae la lista de todas las Empresas
@@ -30,6 +30,7 @@ export class AplicacionService {
     return this.http.get<any>(this.urlEndPoint+'empresa/obtenertodas')
   }
 
+  //POST para consulta Empresa por Id
   obtenerEmpresaPorId(id: number) {
     return this.http.post<any>(this.urlEndPoint+'empresa/porid', id)
   }
@@ -87,6 +88,11 @@ export class AplicacionService {
   //POST para guardar archivo
   guardarAdjuntos(form: FormData) {
     return this.http.post<any>(this.urlEndPoint+'upload', form)
+  }
+
+  //POST para autenticar usuario
+  autenticarUsuario(usuario: Usuarios) {
+    return this.http.post<any>(this.urlEndPoint+'usuario/autenticar', usuario)
   }
 
 }
