@@ -47,15 +47,12 @@ export class LoginComponent implements OnInit {
     this.usuario.usrClave = claveCifrada;
     this.apiService.autenticarUsuario(this.usuario)
       .subscribe(res => {
-        console.log("Respuesta: ", res)
         if (res != null || res != undefined) {
           Swal.close();
-          //console.log(resp.listaObjetos[0].usrRol);
           this.rolesService.addRole(res.usrRol, []);
           this.$username = res.usrAlias;
           this.empresa = res.empresa.id;
           this.util.nombreUser$.emit(this.$username);
-          console.log("UserName encabezado: ", this.$username, this.empresa);
           sessionStorage.setItem('username', this.$username);
           sessionStorage.setItem('email', this.usuario.usrMail);
           sessionStorage.setItem('empresa', this.empresa);

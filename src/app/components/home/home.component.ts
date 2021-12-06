@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AplicacionService } from 'src/app/servicios/aplicacion.service';
+import { UtilService } from '../../servicios/util.service';
+import { Usuarios } from '../../modelos/usuarios';
+import { Casos } from 'src/app/modelos/casos';
+import { CasosTabla } from 'src/app/modelos/casosTabla';
 
 
 /**
@@ -13,9 +19,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public page!: number;
+  usr = new Usuarios();
+  casos: CasosTabla [] = [];
+  id!: number;
+
+  constructor( public util: UtilService,  private router: Router, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
+    this.buscarUsuario();
+    //this.listarEmpresas();
   }
+
+  private buscarUsuario() {
+    let mail = sessionStorage.getItem('email');
+    if (mail) {
+      this.apiService.traerUsuarioporMail(mail).subscribe(res => {
+        let usr = res as Usuarios;
+        this.usr = usr;
+        this.listarCasos(this.usr.id);      
+      })
+    } 
+  }
+
+  private listarCasos(id: number) {
+    this.apiService.traerCasosPorUsr(id).subscribe(resp => {
+      let casos = resp as CasosTabla[]
+      this.casos = casos;
+      console.log(this.casos)
+    })
+  }
+  
 
 }

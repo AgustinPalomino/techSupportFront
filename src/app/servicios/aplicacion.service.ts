@@ -31,8 +31,8 @@ export class AplicacionService {
   }
 
   //POST para consulta Empresa por Id
-  obtenerEmpresaPorId(id: number) {
-    return this.http.post<any>(this.urlEndPoint+'empresa/porid', id)
+  obtenerEmpresaPorId(id: number):Observable<any> {
+    return this.http.post<any>(this.urlEndPoint+`empresa/porid/${id}`, id)
   }
 
   //POST para registrar una Empresa
@@ -42,12 +42,12 @@ export class AplicacionService {
 
   //POST para eliminar Empresa
   eliminarEmpresa(id: number) {
-    return this.http.post<any>(this.urlEndPoint+'empres/borrar', id)
+    return this.http.post<any>(this.urlEndPoint+`empres/borrar/${id}`, id)
   }
 
   //POST obtener usuario por mail y empresa
-  traerUsuarioporMail(mail: String):Observable<any> {
-    return this.http.post<any>(this.urlEndPoint+'usuario/buscarpormail', mail)
+  traerUsuarioporMail(mail: String) {
+   return this.http.post<any>(this.urlEndPoint+`usuario/buscarpormail/${mail}`, mail)
   }
 
   //GET para obtener todos los usuarios por empresa
@@ -67,12 +67,12 @@ export class AplicacionService {
 
   //POST para obtener las referencias hijos por codigo padre
   traerReferenciasPorCodigo(cod: string){
-    return this.http.post<any>(this.urlEndPoint+'ref/refporcod', cod)
+    return this.http.post<any>(this.urlEndPoint+`ref/refporcod/${cod}`, cod)
   }
 
   //POST para traer usuario por Id
   traerUsuarioPorId(id: number) {
-    return this.http.post<any>(this.urlEndPoint+'usuario', id)
+    return this.http.post<any>(this.urlEndPoint+`usuario/${id}`, id)
   }
 
    //GET que realiza el consumo que trae todos los padres en referencia
@@ -93,6 +93,11 @@ export class AplicacionService {
   //POST para autenticar usuario
   autenticarUsuario(usuario: Usuarios) {
     return this.http.post<any>(this.urlEndPoint+'usuario/autenticar', usuario)
+  }
+
+  //POST para buscar casos por usuario
+  traerCasosPorUsr(id: number) {
+    return this.http.post<any>(this.urlEndPoint+`casos/buscarporusr/${id}`, id)
   }
 
 }

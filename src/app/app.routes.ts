@@ -28,7 +28,7 @@ const APP_ROUTES: Routes = [
     { path: 'usuarios', component: UsuariosComponent, canActivate: [ AuthGuard ] },
     { path: 'crear-empresa', component: CrearEmpresaComponent, canActivate: [ AuthGuard ] },
     { path: 'editar-empresa/:Id', component: EditarEmpresaComponent, canActivate: [ AuthGuard ] },
-    { path: 'crear-referencia', component: CrearReferenciaComponent, canActivate: [ AuthGuard ] },
+    { path: 'crear-referencia/:codRef', component: CrearReferenciaComponent, canActivate: [ AuthGuard ] },
     { path: 'editar-referencia', component: EditarReferenciaComponent, canActivate: [ AuthGuard ] },
     { path: 'crear-usuario', component: CrearUsuarioComponent, canActivate: [ AuthGuard ] },
     { path: 'editar-usuario/:Id', component: EditarUsuarioComponent, canActivate: [ AuthGuard ] },

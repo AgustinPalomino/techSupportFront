@@ -4,7 +4,7 @@
  */
 export class Casos {
     id!: number;
-    casFechaInicio!: Date;
+    casFechaIni!: Date;
     casTipo!: string;
     casAtiende!: string;
     casSeveridad!: string;
@@ -13,5 +13,5 @@ export class Casos {
     casAdjuntos!: string;
     casUsrId!: number;
     casFechaFinalizado!: Date;
-    
+    casEstado!: string;
 }

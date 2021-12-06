@@ -1,7 +1,7 @@
 {
     "/home/*": {
-
+        "target": "http://localhost:8789",
         "secure": false,
-        "changeOrigin": true
+        "logLevel": "debug"
     }
 }
