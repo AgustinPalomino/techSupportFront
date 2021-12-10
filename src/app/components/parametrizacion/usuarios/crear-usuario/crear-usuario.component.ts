@@ -29,6 +29,7 @@ export class CrearUsuarioComponent implements OnInit {
   codigos: Select [] = [];
   codigo: any;
   empresas: Select [] = [];
+  empresa = new Empresa;
 
   constructor( public util: UtilService, private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
 
@@ -52,6 +53,10 @@ export class CrearUsuarioComponent implements OnInit {
     });
       return;
     }
+    this.empresa.id = Number(this.usuario.usrEmpId);
+    this.usuario.usrEmpId = this.empresa;
+    console.log(this.empresa);
+    console.log(this.usuario);
     this.apiService.guardarUsuario(this.usuario).subscribe(res => {
       Swal.fire({
         title: 'Espere',
@@ -61,7 +66,7 @@ export class CrearUsuarioComponent implements OnInit {
       });
       Swal.showLoading();
       if (res != null || res != undefined) {
-        console.log('Entré')
+        console.log('Entré', this.usuario)
         Swal.fire({
          title: "Empresa",
          text: 'se actualizó correctamente',

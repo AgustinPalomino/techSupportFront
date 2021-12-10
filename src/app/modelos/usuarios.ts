@@ -1,3 +1,4 @@
+import { Empresa } from './empresa';
 /**
  * Modelo que representa el modelo de Referencias en la bd
  * @author Agustín Palomino Pardo
@@ -10,6 +11,6 @@ export class Usuarios {
     usrClave!: string;
     usrMail!: string;
     usrRol!: string;
-    usrEmpId!: number;
+    usrEmpId!: Empresa;
     
 }

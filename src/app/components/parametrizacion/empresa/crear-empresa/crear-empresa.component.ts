@@ -14,6 +14,7 @@ import { UtilService } from '../../../../servicios/util.service';
  * @author dev-sumset Agustín Palomino P. 
  */
 
+
 @Component({
   selector: 'app-crear-empresa',
   templateUrl: './crear-empresa.component.html'
@@ -78,7 +79,6 @@ export class CrearEmpresaComponent implements OnInit {
     })
     this.archivos.push(archivoCapturado); //captura varios archivos
     console.log(this.archivos[0].name);
-    //this.nombreArchivo = archivoCapturado.name;
     this.nombreArchivo = this.archivos[0].name;
   }
 
@@ -106,11 +106,13 @@ export class CrearEmpresaComponent implements OnInit {
   }) 
 
   subirArchivo(): any {
+    let empId = sessionStorage.getItem('empresa');
     try {
       const formularioDeDatos = new FormData;
       this.archivos.forEach((archivo: string | Blob) => {
         formularioDeDatos.append('files', archivo);
       });
+      if (empId) formularioDeDatos.append('empId', empId);
       this.apiService.guardarAdjuntos(formularioDeDatos).subscribe(res => {
         console.log('Respuesta del servidor', res);
       })

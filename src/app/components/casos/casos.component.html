@@ -37,5 +37,10 @@
             <a href="#" class="stretched-link"></a>
         </div>
     </div>
+    <div class="col-md-4 p-4 ps-md-0" *ngxPermissionsOnly="['R01', 'R02']">
+        <button routerLink="/asignar-casos" style="margin-left: 25%; width: 150px;" class="btn btn-info">
+            Asignar Casos
+        </button>
+    </div>
 
 </div>

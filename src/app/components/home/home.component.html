@@ -4,9 +4,9 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Casos de Soporte Abiertos</h5>
-        <div class="right">
-            <a href="#/casos" class="btn btn-info btn m-2">Crear Nuevo Caso</a>
-        </div><br><br><br>
+        <div class="col-12 d-flex justify-content-center">
+            <button routerLink="/casos" type="submit" class="btn btn-info">Crear Nuevo Caso</button>
+        </div><br>
         <div class="table-responsive">
             <table class="table table-sm table caption-top">
                 <thead style="background-color:#ffaec8; color: #fff;">
@@ -15,13 +15,13 @@
                         <th scope="col">Asunto</th>
                         <th scope="col">Creación</th>
                         <th scope="col">Estado</th>
-                    </tr>
+                        <th scope="col">Acciones</th>
                 </thead>
                 <tbody>
                     <tr *ngFor="let casos of casos | paginate: { itemsPerPage: 7, currentPage: page }">
                         <th scope="row">{{ casos.id }}</th>
                         <td>{{ casos.asunto}}</td>
-                        <td>{{ casos.fechaIni}}</td>
+                        <td>{{ casos.creacion}}</td>
                         <td>{{ casos.estado}}</td>
                     </tr>
 

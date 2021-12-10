@@ -1,0 +1,49 @@
+<div class="card tb-3 animated fadeIn fast">
+    <div class="card-header bg-light mb-3">
+        Soporte Técnico
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Casos de Soporte Sin Asignar</h5>
+        <div class="col-12 d-flex justify-content-center">
+            <button routerLink="/casos" type="submit" class="btn btn-info">Crear Nuevo Caso</button>
+        </div><br>
+        <div class="table-responsive">
+            <table class="table table-sm table caption-top">
+                <thead style="background-color:#ffaec8; color: #fff;">
+                    <tr>
+                        <th scope="col">ID del Caso</th>
+                        <th scope="col">Creación</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Asunto</th>
+                        <th scope="col">Severidad</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Asignar</th>
+                        <th scope="col">Acciones</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let casos of casos | paginate: { itemsPerPage: 7, currentPage: page }">
+                        <th scope="row">{{ casos.id }}</th>
+                        <td>{{ casos.casFechaIni}}</td>
+                        <td>{{ casos.casCategoria}}</td>
+                        <td>{{ casos.casSubject}}</td>
+                        <td>{{ casos.casSeveridad}}</td>
+                        <td>{{ casos.casUsrId}}</td>
+                        <td>
+                            <select class="form-control" name="tecnico" id="tecnico" [(ngModel)]="tecnico.id">
+                                <option *ngFor="let tecnico of tecnicos" [value]="tecnico.valor">
+                                  {{ tecnico.etiqueta }}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button title="Asignar" class="btn btn-info mr-1" (click)="asignarCaso(tecnico.id)">
+                                <i class="fas fa-check-double"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

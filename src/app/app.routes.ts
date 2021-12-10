@@ -2,7 +2,6 @@
 import { RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { CasosComponent } from './components/casos/casos.component';
-import { SoporteComponent }  from './components/soporte/soporte.component';
 import { ParametrizacionComponent } from './components/parametrizacion/parametrizacion.component';
 import { EmpresaComponent } from './components/parametrizacion/empresa/empresa.component';
 import { ReferenciasComponent } from './components/parametrizacion/referencias/referencias.component';
@@ -17,11 +16,11 @@ import { CrearHijosComponent } from './components/parametrizacion/referencias/cr
 import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from 'src/app/components/autenticacion/login/login.component';
+import { AsignarCasosComponent } from 'src/app/components/casos/asignar-casos/asignar-casos.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] },
     { path: 'casos', component: CasosComponent, canActivate: [ AuthGuard ] },
-    { path: 'soporte', component: SoporteComponent, canActivate: [ AuthGuard ] },
     { path: 'parametrizacion', component: ParametrizacionComponent, canActivate: [ AuthGuard ] },
     { path: 'empresa', component: EmpresaComponent, canActivate: [ AuthGuard ] },
     { path: 'referencias', component: ReferenciasComponent, canActivate: [ AuthGuard ] },
@@ -35,6 +34,7 @@ const APP_ROUTES: Routes = [
     { path: 'crear-hijos/:codRef', component: CrearHijosComponent, canActivate: [ AuthGuard ] },
     { path: 'caso-soft', component: CasoSoftComponent, canActivate: [ AuthGuard ] },
     { path: 'login', component: LoginComponent },
+    { path: 'asignar-casos', component: AsignarCasosComponent, canActivate: [ AuthGuard ] },
     { path: '', pathMatch: 'full', redirectTo: 'login'},
     { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];

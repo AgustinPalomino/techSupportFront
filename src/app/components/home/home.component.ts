@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from '../../servicios/util.service';
 import { Usuarios } from '../../modelos/usuarios';
-import { Casos } from 'src/app/modelos/casos';
 import { CasosTabla } from 'src/app/modelos/casosTabla';
 
 
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit {
     this.apiService.traerCasosPorUsr(id).subscribe(resp => {
       let casos = resp as CasosTabla[]
       this.casos = casos;
-      console.log(this.casos)
     })
   }
   

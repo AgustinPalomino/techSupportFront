@@ -8,7 +8,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 import { NgxPermissionsModule } from 'ngx-permissions';
+
 
 // Rutas
 import { APP_ROUTING }  from './app.routes';
@@ -21,7 +28,6 @@ import { UtilService } from './servicios/util.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { SoporteComponent } from './components/soporte/soporte.component';
 import { CasosComponent } from './components/casos/casos.component';
 import { ParametrizacionComponent } from './components/parametrizacion/parametrizacion.component';
 import { EmpresaComponent } from './components/parametrizacion/empresa/empresa.component';
@@ -37,13 +43,13 @@ import { CrearHijosComponent } from './components/parametrizacion/referencias/cr
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.component';
 import { LoginComponent } from './components/autenticacion/login/login.component';
+import { AsignarCasosComponent } from './components/casos/asignar-casos/asignar-casos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    SoporteComponent,
     CasosComponent,
     ParametrizacionComponent,
     EmpresaComponent,
@@ -58,6 +64,7 @@ import { LoginComponent } from './components/autenticacion/login/login.component
     CrearHijosComponent,
     CasoSoftComponent,
     LoginComponent,
+    AsignarCasosComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +79,10 @@ import { LoginComponent } from './components/autenticacion/login/login.component
     MatRadioModule,
     MatFormFieldModule,
     NgxPermissionsModule.forRoot(),
+    MatProgressBarModule,
+    MatCardModule,
+    MatIconModule,
+    MatGridListModule
   ],
   exports: [ NgxPaginationModule ],
   providers: [

@@ -5,7 +5,7 @@
 
  export class CasosTabla {
     id!: number;
-    fechaIni!: Date;
+    creacion!: Date;
     asunto!: string;
     descripcion!: string;
     estado!: string;

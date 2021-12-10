@@ -21,6 +21,10 @@
                 <span *ngIf="f.submitted && f.controls['nit'].errors" class="text-danger animated fadeIn"> es requerido</span>
                 <input type="text" class="form-control" placeholder="Ingrese el Nit" [(ngModel)]="empresa.empNit" name="nit" required minlength="6">
             </div>
+            <div class="col-md-6 form-group">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" placeholder="Ingrese el Teléfono" [(ngModel)]="empresa.empTelefono" name="tel" required minlength="6">
+            </div>
             <div class="col-md-12 form-group">
                 <label class="form-label">Logo de Empresa</label>
                 <input (change)="capturarFile($event)" type="file" class="form-control" [(ngModel)]="empresa.empLogo" name="logo">

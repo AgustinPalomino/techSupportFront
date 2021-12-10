@@ -30,6 +30,7 @@ export class EditarUsuarioComponent implements OnInit {
   empresas: Select [] = [];
   codigo: any;
   id: any;
+  empresa = new Empresa();
 
   constructor( public util: UtilService, private router: Router, private http: HttpClient, 
     public apiService: AplicacionService, private route: ActivatedRoute ) { }
@@ -65,6 +66,8 @@ export class EditarUsuarioComponent implements OnInit {
     });
       return;
     }
+    //this.empresa.id = this.usuario.empresa.id;
+    console.log(this.usuario)
     this.apiService.guardarUsuario(this.usuario).subscribe(res => {
       Swal.fire({
         title: 'Espere',

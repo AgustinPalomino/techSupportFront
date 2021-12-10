@@ -51,8 +51,6 @@ export class EmpresaComponent implements OnInit {
     this.apiService.traerTodasEmpresas().subscribe(res => {
       let empresa = res as Empresa [];
       this.empresa = empresa;
-      console.log(this.empresa);
-      console.log(res);
     });
   }
 

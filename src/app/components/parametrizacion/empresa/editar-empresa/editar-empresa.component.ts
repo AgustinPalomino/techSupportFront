@@ -83,12 +83,14 @@ export class EditarEmpresaComponent implements OnInit {
   capturarFile(event: any): any {
     console.log('Entro a capturarFile');
     const archivoCapturado = event.target.files[0];
+    console.log(archivoCapturado.name);
     this.extraerBase64(archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
+      console.log(imagen);
     })
     this.archivos.push(archivoCapturado); //captura varios archivos
     console.log(this.archivos[0].name);
-    this.nombreArchivo = archivoCapturado.name;
+    this.nombreArchivo = this.archivos[0].name;
   }
 
   extraerBase64 = async ($event: any) => new Promise((resolve): any => {
@@ -115,11 +117,13 @@ export class EditarEmpresaComponent implements OnInit {
   }) 
 
   subirArchivo(): any {
+    let empId = sessionStorage.getItem('empresa');
     try {
       const formularioDeDatos = new FormData;
       this.archivos.forEach((archivo: string | Blob) => {
         formularioDeDatos.append('files', archivo);
       });
+      if (empId) formularioDeDatos.append('empId', empId);
       this.apiService.guardarAdjuntos(formularioDeDatos).subscribe(res => {
         console.log('Respuesta del servidor', res);
       })

@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient,HttpRequest, HttpEvent, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Empresa } from '../modelos/empresa';
 import { Usuarios } from '../modelos/usuarios';
 import { Referencia } from '../modelos/referencia';
+import { Casos } from '../modelos/casos';
 
 /**
  * Clase que expone servicios de la aplicación
@@ -90,6 +91,29 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+'upload', form)
   }
 
+  upload(file: File): Observable<HttpEvent<any>>{
+    let empId = sessionStorage.getItem('empresa');
+    const formData: FormData = new FormData();
+    formData.append('files', file);
+    if (empId) formData.append('empId', empId);
+   
+    const req = new HttpRequest('POST', this.urlEndPoint+'upload', formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+  //Metodo para Obtener los archivos
+  getFiles(){
+    return this.http.get(this.urlEndPoint+'files');
+  }
+
+  //Metodo para borrar los archivos cargados
+  deleteFile(filename: string){
+    return this.http.get(this.urlEndPoint+`delete/${filename}`);
+  }
+
   //POST para autenticar usuario
   autenticarUsuario(usuario: Usuarios) {
     return this.http.post<any>(this.urlEndPoint+'usuario/autenticar', usuario)
@@ -98,6 +122,20 @@ export class AplicacionService {
   //POST para buscar casos por usuario
   traerCasosPorUsr(id: number) {
     return this.http.post<any>(this.urlEndPoint+`casos/buscarporusr/${id}`, id)
+  }
+
+  //POST para registrar un Caso
+  guardarCaso(caso: Casos) {
+    return this.http.post<any>(this.urlEndPoint+'casos/crear', caso)
+  }  
+
+  //GET para buscar casos sin asignar
+  traerCasosSinAsignar() {
+    return this.http.get<any>(this.urlEndPoint+'casos/buscarnoasinados')
+  }
+
+  listarTecnicos() {
+    return this.http.get<any>(this.urlEndPoint+'usuario/buscartecnicos')
   }
 
 }
