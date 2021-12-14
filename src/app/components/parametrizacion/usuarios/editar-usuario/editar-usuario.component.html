@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-4 form-group">
                 <label class="form-label">Empresa</label>
-                <select class="form-control" name="refSelect" id="refSelect" required [(ngModel)]="usuario.usrEmpId">
+                <select class="form-control" name="refSelect" id="refSelect" required [(ngModel)]="usuario.empresa">
                     <option [value]="" *ngFor="let empresa of empresas" [value]="empresa.valor">
                       {{ empresa.etiqueta }}
                     </option>

@@ -11,6 +11,6 @@ export class Usuarios {
     usrClave!: string;
     usrMail!: string;
     usrRol!: string;
-    usrEmpId!: Empresa;
+    empresa!: Empresa;
     
 }

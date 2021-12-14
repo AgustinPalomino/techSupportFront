@@ -4,6 +4,7 @@ import { Select } from 'src/app/interfases/Select';
 import { Casos } from 'src/app/modelos/casos';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from 'src/app/servicios/util.service';
+import Swal from 'sweetalert2';
 import { Usuarios } from '../../../modelos/usuarios';
 
 @Component({
@@ -16,6 +17,7 @@ export class AsignarCasosComponent implements OnInit {
   casos: Casos [] = [];
   tecnicos: Select [] = [];
   tecnico = new Usuarios;
+  caso = new Casos;
 
   constructor(  public util: UtilService,  private router: Router, public apiService: AplicacionService ) { }
 
@@ -44,9 +46,37 @@ export class AsignarCasosComponent implements OnInit {
     })
   }
 
-  asignarCaso(id: number) {
-    console.log(id)
-
+  asignarCaso(idCaso: number, idTecnico: number) {
+    this.apiService.traerCasoPorId(idCaso).subscribe( resp => {
+      let caso = resp as Casos
+      this.caso = caso
+      this.caso.casAtiende = idTecnico;
+    
+      this.apiService.guardarCaso(this.caso).subscribe(res => {
+        Swal.fire({
+          title: 'Espere',
+          text: 'Guardando información',
+          icon: 'info',
+          allowOutsideClick: false
+        });
+        Swal.showLoading();
+        if (res != null || res != undefined) {
+          Swal.fire({
+           title: "Caso",
+           text: 'actualizado correctamente',
+           icon: 'success'
+          });
+          this.router.navigate(['casos'])
+        } else {
+          Swal.showLoading();
+          Swal.fire({
+            title: "Registro",
+            text: 'NO se actualizó correctamente',
+            icon: 'error'
+          });
+        }
+      })
+    })
   }
 
 }

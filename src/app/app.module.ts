@@ -44,6 +44,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.component';
 import { LoginComponent } from './components/autenticacion/login/login.component';
 import { AsignarCasosComponent } from './components/casos/asignar-casos/asignar-casos.component';
+import { CasosActivosComponent } from './components/casos/casos-activos/casos-activos.component';
+import { EditarCasoComponent } from './components/casos/editar-caso/editar-caso.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { AsignarCasosComponent } from './components/casos/asignar-casos/asignar-
     CasoSoftComponent,
     LoginComponent,
     AsignarCasosComponent,
+    CasosActivosComponent,
+    EditarCasoComponent,
   ],
   imports: [
     BrowserModule,

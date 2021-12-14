@@ -4,9 +4,6 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Casos de Soporte Sin Asignar</h5>
-        <div class="col-12 d-flex justify-content-center">
-            <button routerLink="/casos" type="submit" class="btn btn-info">Crear Nuevo Caso</button>
-        </div><br>
         <div class="table-responsive">
             <table class="table table-sm table caption-top">
                 <thead style="background-color:#ffaec8; color: #fff;">
@@ -27,7 +24,7 @@
                         <td>{{ casos.casCategoria}}</td>
                         <td>{{ casos.casSubject}}</td>
                         <td>{{ casos.casSeveridad}}</td>
-                        <td>{{ casos.casUsrId}}</td>
+                        <td>{{ casos.usuario.usrNombre}}</td>
                         <td>
                             <select class="form-control" name="tecnico" id="tecnico" [(ngModel)]="tecnico.id">
                                 <option *ngFor="let tecnico of tecnicos" [value]="tecnico.valor">
@@ -36,7 +33,7 @@
                             </select>
                         </td>
                         <td>
-                            <button title="Asignar" class="btn btn-info mr-1" (click)="asignarCaso(tecnico.id)">
+                            <button title="Asignar" class="btn btn-info mr-1" (click)="asignarCaso(casos.id, tecnico.id)">
                                 <i class="fas fa-check-double"></i>
                             </button>
                         </td>

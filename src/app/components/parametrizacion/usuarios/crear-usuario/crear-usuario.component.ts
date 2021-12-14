@@ -53,9 +53,8 @@ export class CrearUsuarioComponent implements OnInit {
     });
       return;
     }
-    this.empresa.id = Number(this.usuario.usrEmpId);
-    this.usuario.usrEmpId = this.empresa;
-    console.log(this.empresa);
+    this.empresa.id = Number(this.usuario.empresa);
+    this.usuario.empresa = this.empresa;
     console.log(this.usuario);
     this.apiService.guardarUsuario(this.usuario).subscribe(res => {
       Swal.fire({
@@ -72,7 +71,7 @@ export class CrearUsuarioComponent implements OnInit {
          text: 'se actualizó correctamente',
          icon: 'success'
         });
-        this.router.navigate(['crear-empresa'])
+        this.router.navigate(['crear-usuario'])
       } else {
         Swal.showLoading();
         Swal.fire({

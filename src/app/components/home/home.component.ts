@@ -4,6 +4,7 @@ import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from '../../servicios/util.service';
 import { Usuarios } from '../../modelos/usuarios';
 import { CasosTabla } from 'src/app/modelos/casosTabla';
+import { Casos } from 'src/app/modelos/casos';
 
 
 /**
@@ -19,15 +20,17 @@ import { CasosTabla } from 'src/app/modelos/casosTabla';
 export class HomeComponent implements OnInit {
 
   public page!: number;
+  public page2!: number;
   usr = new Usuarios();
   casos: CasosTabla [] = [];
+  casosP: Casos [] = [];
   id!: number;
 
   constructor( public util: UtilService,  private router: Router, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
     this.buscarUsuario();
-    //this.listarEmpresas();
+    this.listarCasosPendientes();
   }
 
   private buscarUsuario() {
@@ -47,6 +50,12 @@ export class HomeComponent implements OnInit {
       this.casos = casos;
     })
   }
-  
+
+  private listarCasosPendientes() {
+  this.apiService.listarCasosPendientes().subscribe(resp => {
+    let casosP = resp as Casos[]
+    this.casosP = casosP; 
+  })
+  }
 
 }

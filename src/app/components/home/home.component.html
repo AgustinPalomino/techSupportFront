@@ -1,8 +1,9 @@
+<!-- <div class="card tb-3 animated fadeIn fast" *ngxPermissionsOnly="['R04']"> -->
 <div class="card tb-3 animated fadeIn fast">
     <div class="card-header bg-light mb-3">
         Soporte Técnico
     </div>
-    <div class="card-body">
+    <div class="card-body" *ngxPermissionsOnly="['R04']">
         <h5 class="card-title">Casos de Soporte Abiertos</h5>
         <div class="col-12 d-flex justify-content-center">
             <button routerLink="/casos" type="submit" class="btn btn-info">Crear Nuevo Caso</button>
@@ -24,10 +25,39 @@
                         <td>{{ casos.creacion}}</td>
                         <td>{{ casos.estado}}</td>
                     </tr>
-
                 </tbody>
             </table>
         </div>
-
+    </div>
+    <div class="card tb-3 animated fadeIn fast" *ngxPermissionsOnly="['R01']">
+        <div class="card-body">
+            <h5 class="card-title">Casos de Soporte Pendientes (No terminados) </h5>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-sm table caption-top">
+                    <thead style="background-color:#ffaec8; color: #fff;">
+                        <tr>
+                            <th scope="col">ID del Caso</th>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Creación</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let casosP of casosP | paginate: { itemsPerPage: 8, currentPage: page2 }">
+                            <th scope="row">{{ casosP.id }}</th>
+                            <td>{{ casosP.casSubject}}</td>
+                            <td>{{ casosP.casFechaIni}}</td>
+                            <td>{{ casosP.casEstado}}</td>
+                            <td>
+                                <button title="Editar" class="btn btn-info ml-1" [routerLink]="['/editar-caso', casosP.id]">
+                                    <i class="fa fa-pen"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

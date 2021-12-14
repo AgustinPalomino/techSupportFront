@@ -56,6 +56,11 @@ export class AplicacionService {
     return this.http.get<any>(this.urlEndPoint+'usuario/obtenertodos')
   }
 
+  //GET para traer todos los casos
+  traerTodosCasos(): Observable<any> {
+    return this.http.get<any>(this.urlEndPoint+'casos/obtenertodos')
+  }
+
   //POST para eliminar usuario
   eliminarUsuario(id: number) {
     return this.http.post<any>(this.urlEndPoint+'usuario/borrar', id)
@@ -76,8 +81,13 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+`usuario/${id}`, id)
   }
 
-   //GET que realiza el consumo que trae todos los padres en referencia
-   traerRefPadre() {
+  //POST para traer un caso por Id
+  traerCasoPorId(id: number) {
+    return this.http.post<any>(this.urlEndPoint+`casos/porid/${id}`, id)
+  }
+
+  //GET que realiza el consumo que trae todos los padres en referencia
+  traerRefPadre() {
     return this.http.get<any>(this.urlEndPoint+'ref/refpad')
   }
 
@@ -91,6 +101,7 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+'upload', form)
   }
 
+  // Almacenar archivos de imagen
   upload(file: File): Observable<HttpEvent<any>>{
     let empId = sessionStorage.getItem('empresa');
     const formData: FormData = new FormData();
@@ -134,8 +145,21 @@ export class AplicacionService {
     return this.http.get<any>(this.urlEndPoint+'casos/buscarnoasinados')
   }
 
+  //GET para buscar los técnicos de la empresa
   listarTecnicos() {
     return this.http.get<any>(this.urlEndPoint+'usuario/buscartecnicos')
   }
+
+  //GET para listar los casos activos (pendientes)
+  listarCasosPendientes() {
+    return this.http.get<any>(this.urlEndPoint+'casos/pendientes')
+  }
+
+  //POST para listar los casoso pendientes por técnico
+  listarPendientesPorTecnico(id: number) {
+    return this.http.post<any>(this.urlEndPoint+`casos/pendientestecnico/${id}`, id)
+  }
+
+  
 
 }

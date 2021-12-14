@@ -1,32 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Select } from 'src/app/interfases/Select';
 import { Casos } from 'src/app/modelos/casos';
+import { Empresa } from 'src/app/modelos/empresa';
 import { FiltroEmpRef } from 'src/app/modelos/filtroEmpRef';
 import { Referencia } from 'src/app/modelos/referencia';
+import { Usuarios } from 'src/app/modelos/usuarios';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
-import { UtilService } from '../../../servicios/util.service';
-import { Select } from 'src/app/interfases/Select';
-import { Empresa } from 'src/app/modelos/empresa';
-import { DomSanitizer } from '@angular/platform-browser';
+import { UtilService } from 'src/app/servicios/util.service';
 import Swal from 'sweetalert2';
-import { Usuarios } from '../../../modelos/usuarios';
 
 
 /**
- * Componente para crear una Empresa
+ * Componente para editar una Empresa
  * @author dev-sumset Agustín Palomino P. 
  */
 
 
 @Component({
-  selector: 'app-caso-soft',
-  templateUrl: './caso-soft.component.html',
-  styleUrls: ['./caso-soft.component.scss']
+  selector: 'app-editar-caso',
+  templateUrl: './editar-caso.component.html'
 })
-export class CasoSoftComponent implements OnInit {
+export class EditarCasoComponent implements OnInit {
 
+  cod: any;
   caso = new Casos;
   fil = new FiltroEmpRef;
   tipos: Select [] = [];
@@ -42,14 +42,26 @@ export class CasoSoftComponent implements OnInit {
   archivoCapturado = '';
   usr = new Usuarios;
 
-  constructor( private sanitizer: DomSanitizer, public util: UtilService, private router: Router, 
-    private http: HttpClient, public apiService: AplicacionService ) { }
+  constructor( private route: ActivatedRoute, private sanitizer: DomSanitizer, public util: UtilService, 
+    private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.cod = params.get("Id")
+    })
+    this.buscarCasoPorId(this.cod);
     this.obtenerSeveridad();
     this.obtenerTipoSoft();
   }
-  
+
+  buscarCasoPorId(id: number) {
+    this.apiService.traerCasoPorId(id).subscribe(res => {
+      let caso = res as Casos;
+      this.caso = caso; 
+      console.log(res)
+    })
+  }
+
   guardarCaso( form: NgForm ) {
     console.log(this.caso);
     if( form.invalid ) {
@@ -177,6 +189,5 @@ export class CasoSoftComponent implements OnInit {
       console.log('Error al subir archivos: ',error);
     }
   }
-
 
 }

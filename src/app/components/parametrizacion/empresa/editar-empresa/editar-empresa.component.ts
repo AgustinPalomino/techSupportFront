@@ -40,7 +40,6 @@ export class EditarEmpresaComponent implements OnInit {
       let empresa = res as Empresa;
       this.empresa = empresa; 
     })
-    
   }
 
   guardarEmpresa( form: NgForm ) {

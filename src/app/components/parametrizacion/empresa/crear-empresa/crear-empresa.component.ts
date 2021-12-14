@@ -112,7 +112,8 @@ export class CrearEmpresaComponent implements OnInit {
       this.archivos.forEach((archivo: string | Blob) => {
         formularioDeDatos.append('files', archivo);
       });
-      if (empId) formularioDeDatos.append('empId', empId);
+      //if (empId) formularioDeDatos.append('empId', empId);
+      if (empId) formularioDeDatos.append('empId', 'logos'); //enviamos logos para que guarde en esa carpeta
       this.apiService.guardarAdjuntos(formularioDeDatos).subscribe(res => {
         console.log('Respuesta del servidor', res);
       })

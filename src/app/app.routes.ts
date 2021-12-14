@@ -17,6 +17,8 @@ import { CasoSoftComponent } from './components/casos/caso-soft/caso-soft.compon
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from 'src/app/components/autenticacion/login/login.component';
 import { AsignarCasosComponent } from 'src/app/components/casos/asignar-casos/asignar-casos.component';
+import { CasosActivosComponent } from 'src/app/components/casos/casos-activos/casos-activos.component';
+import { EditarCasoComponent } from 'src/app/components/casos/editar-caso/editar-caso.component';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] },
@@ -35,6 +37,8 @@ const APP_ROUTES: Routes = [
     { path: 'caso-soft', component: CasoSoftComponent, canActivate: [ AuthGuard ] },
     { path: 'login', component: LoginComponent },
     { path: 'asignar-casos', component: AsignarCasosComponent, canActivate: [ AuthGuard ] },
+    { path: 'casos-activos', component: CasosActivosComponent, canActivate: [ AuthGuard ] },
+    { path: 'editar-caso/:Id', component: EditarCasoComponent, canActivate: [ AuthGuard ] },
     { path: '', pathMatch: 'full', redirectTo: 'login'},
     { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
