@@ -91,6 +91,11 @@ export class AplicacionService {
     return this.http.get<any>(this.urlEndPoint+'ref/refpad')
   }
 
+  //POST para traer el nombre de la referencia
+  traerNombreRef(cod: string) {
+    return this.http.post<any>(this.urlEndPoint+`ref/refcod/${cod}`, cod)
+  }
+
   //POST para registrar una referencia
   guardarReferencia(ref: Referencia) {
     return this.http.post<any>(this.urlEndPoint+'ref/guardar', ref)

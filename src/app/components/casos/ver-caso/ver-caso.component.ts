@@ -21,11 +21,12 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-editar-caso',
-  templateUrl: './editar-caso.component.html'
+  selector: 'app-ver-caso',
+  templateUrl: './ver-caso.component.html'
 })
-export class EditarCasoComponent implements OnInit {
+export class VerCasoComponent implements OnInit {
 
+  public page!: number;
   cod: any;
   caso = new Casos;
   fil = new FiltroEmpRef;

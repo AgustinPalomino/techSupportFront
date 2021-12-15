@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from '../../servicios/util.service';
 
 
 /**
@@ -15,7 +16,7 @@ export class CasosComponent implements OnInit {
 
   banderaS : boolean = false;
 
-  constructor() { }
+  constructor( public util: UtilService ) { }
 
   ngOnInit(): void {
   }

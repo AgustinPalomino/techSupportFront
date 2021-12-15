@@ -1,6 +1,13 @@
 <div class="card tb-3 animated fadeIn fast">
-    <div class="card-header bg-light mb-3">
-        Soporte Técnico
+    <div class="card-header bg-light mb-3">Soporte Técnico
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
     </div>
     <div class="card-body">
         <h5 class="card-title">Casos de Soporte Sin Asignar</h5>

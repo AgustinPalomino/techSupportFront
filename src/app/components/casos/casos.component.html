@@ -1,8 +1,14 @@
 <div class="card d-flex justify-content-center">
     <h2 class="card-header">Crear Caso
-        <a class="btn btn-light" style="color: rgb(26, 190, 245);" data-bs-toggle="offcanvas" href="#offcanvasRight" role="link" aria-controls="offcanvasExample">
-            info
-          </a>
+        <a class="btn btn-light" style="color: rgb(26, 190, 245);" data-bs-toggle="offcanvas" href="#offcanvasRight" role="link" aria-controls="offcanvasExample">info</a>
+        <div class="float-right letravino">
+            <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
+          <i class="fa fa-home"></i>
+        </button>
+            <button (click)="util.paginaAnterior()" class="btn btn-info mr-1">
+          <i class="fa fa-reply"></i>
+        </button>
+        </div>
     </h2>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
@@ -29,12 +35,12 @@
         <div class="col-md-4 p-4 ps-md-0">
             <h5 class="mt-0">Soporte Administrativo</h5>
             <p>Asistencia para software Administrativo, CRM, Aplicativos de negocio </p>
-            <a href="#" class="stretched-link"></a>
+            <a href="#caso-adm" class="stretched-link"></a>
         </div>
         <div class="col-md-4 p-4 ps-md-0">
             <h5 class="mt-0">Soporte de Hardware</h5>
             <p>Asistencia para incidencias con equipos de cómputo (portátiles, desktop, tablets) y periféricos (impresoras, drives, reguladores, etc.) </p>
-            <a href="#" class="stretched-link"></a>
+            <a href="#caso-hard" class="stretched-link"></a>
         </div>
     </div>
     <div *ngxPermissionsOnly="['R01', 'R02']">

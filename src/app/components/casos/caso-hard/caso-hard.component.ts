@@ -21,10 +21,10 @@ import { Usuarios } from '../../../modelos/usuarios';
 
 
 @Component({
-  selector: 'app-caso-soft',
-  templateUrl: './caso-soft.component.html'
+  selector: 'app-caso-hard',
+  templateUrl: './caso-hard.component.html'
 })
-export class CasoSoftComponent implements OnInit {
+export class CasoHardComponent implements OnInit {
 
   caso = new Casos;
   fil = new FiltroEmpRef;
@@ -113,7 +113,7 @@ export class CasoSoftComponent implements OnInit {
 
   //Método para obtener los códigos de tipo casos software
   private obtenerTipoSoft() {
-    this.fil.codRef = 'CS00'; //******PENDIENTE FILTRAR POR EMPRESA SI ES NECESARIO */
+    this.fil.codRef = 'CH00'; //******PENDIENTE FILTRAR POR EMPRESA SI ES NECESARIO */
     //this.fil.empId = Number(sessionStorage.getItem('empresa'));
     this.apiService.traerReferenciasPorCodigo(this.fil.codRef).subscribe(res =>{
       let tipos = res as Referencia[]
@@ -175,6 +175,5 @@ export class CasoSoftComponent implements OnInit {
       console.log('Error al subir archivos: ',error);
     }
   }
-
 
 }

@@ -24,7 +24,7 @@ export class CrearReferenciaComponent implements OnInit {
   nombrePadre: any;
   referencias: Referencia [] = [];
   referencia: any;
-  ref: Referencia [] = [];
+  ref = new Referencia();
   codigo: any;
   regla = new Referencia;
   fil = new FiltroEmpRef;
@@ -52,10 +52,10 @@ export class CrearReferenciaComponent implements OnInit {
   }
 
   obtenerNombre(codigo: string) {
-    this.apiService.traerReferenciasPorCodigo(codigo).subscribe(res =>{
-      let ref = res as Referencia []
+    this.apiService.traerNombreRef(codigo).subscribe(res =>{
+      let ref = res as Referencia
       this.ref = ref;
-      this.nombrePadre = ref[0].refNombre;
+      this.nombrePadre = ref.refNombre;
     })
   }
 

@@ -1,5 +1,5 @@
 <div class="card" style="border-radius: 10px 10px 0 0;">
-    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso de Software
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso de Hardware
         <div class="float-right letravino">
             <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
             <i class="fa fa-home"></i>
@@ -13,7 +13,7 @@
         <mat-card id="box0">
             <form class="row g-3" (ngSubmit)="guardarCaso(f)" #f="ngForm" name="fcaso" enctype="multipart/form-data">
                 <div class="col-md-12 form-group">
-                    <h6 class="letravino">Tipo de Software</h6><br>
+                    <h6 class="letravino">Tipo de Hardware</h6><br>
                     <div class="container">
                         <mat-radio-group name="tipo" [(ngModel)]="caso.casTipo">
                             <mat-radio-button *ngFor="let tipo of tipos" [value]="tipo.valor" style="margin: 15px">

@@ -29,7 +29,7 @@
             </table>
         </div>
     </div>
-    <div class="card tb-3 animated fadeIn fast" *ngxPermissionsOnly="['R01']">
+    <div class="card tb-3 animated fadeIn fast" *ngxPermissionsOnly="['R01', 'R02']">
         <div class="card-body">
             <h5 class="card-title">Casos de Soporte Pendientes (No terminados) </h5>
             <br>
@@ -38,6 +38,7 @@
                     <thead style="background-color:#ffaec8; color: #fff;">
                         <tr>
                             <th scope="col">ID del Caso</th>
+                            <th scope="col">Solicitante</th>
                             <th scope="col">Asunto</th>
                             <th scope="col">Creación</th>
                             <th scope="col">Estado</th>
@@ -46,11 +47,46 @@
                     <tbody>
                         <tr *ngFor="let casosP of casosP | paginate: { itemsPerPage: 8, currentPage: page2 }">
                             <th scope="row">{{ casosP.id }}</th>
+                            <td>{{ casosP.usuario.usrNombre}}</td>
                             <td>{{ casosP.casSubject}}</td>
                             <td>{{ casosP.casFechaIni}}</td>
                             <td>{{ casosP.casEstado}}</td>
                             <td>
-                                <button title="Editar" class="btn btn-info ml-1" [routerLink]="['/editar-caso', casosP.id]">
+                                <button title="Ver" class="btn btn-info ml-1" [routerLink]="['/ver-caso', casosP.id]">
+                                    <i class="fa fa-eye"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card tb-3 animated fadeIn fast" *ngxPermissionsOnly="['R05', 'R01']">
+        <div class="card-body">
+            <!-- Menú para los técnicos Acá deben poder editar el caso para colocarle terminado-->
+            <h5 class="card-title">Casos de Soporte Pendientes (No terminados) </h5>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-sm table caption-top">
+                    <thead style="background-color:#ffaec8; color: #fff;">
+                        <tr>
+                            <th scope="col">ID del Caso</th>
+                            <th scope="col">Solicitante</th>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Creación</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let casosP of casosP | paginate: { itemsPerPage: 8, currentPage: page2 }">
+                            <th scope="row">{{ casosP.id }}</th>
+                            <td>{{ casosP.usuario.usrNombre}}</td>
+                            <td>{{ casosP.casSubject}}</td>
+                            <td>{{ casosP.casFechaIni}}</td>
+                            <td>{{ casosP.casEstado}}</td>
+                            <td>
+                                <button title="Editar" class="btn btn-info ml-1" [routerLink]="['/ver-caso', casosP.id]">
                                     <i class="fa fa-pen"></i>
                                 </button>
                             </td>

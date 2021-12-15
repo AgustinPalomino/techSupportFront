@@ -1,5 +1,5 @@
 <div class="card" style="border-radius: 10px 10px 0 0;">
-    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso Administrativo
         <div class="float-right letravino">
             <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
             <i class="fa fa-home"></i>
@@ -13,7 +13,7 @@
         <mat-card id="box0">
             <form class="row g-3" (ngSubmit)="guardarCaso(f)" #f="ngForm" name="fcaso" enctype="multipart/form-data">
                 <div class="col-md-12 form-group">
-                    <h6 class="letravino">Tipo de Software</h6><br>
+                    <h6 class="letravino">Tipo Administrativo</h6><br>
                     <div class="container">
                         <mat-radio-group name="tipo" [(ngModel)]="caso.casTipo">
                             <mat-radio-button *ngFor="let tipo of tipos" [value]="tipo.valor" style="margin: 15px">
@@ -46,7 +46,6 @@
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="form-label" style="color: black;">Adjuntos</label>
-
                     <input (change)="capturarFile($event)" type="file" multiple class="form-control" name="adjuntos">
                 </div>
                 <div>
@@ -57,6 +56,45 @@
                 <div *ngIf="previsualizacion">
                     <img width="100px" [src]="previsualizacion" alt="">
                 </div>
+                <!-- <div class="col-md-12 form-group">
+                    <label class="form-label" style="color: black;">Adjuntos</label>
+                </div>
+                <div class="col-md-12 form-group">
+                    <mat-card id="box1">
+                        <div mode="buffer" *ngFor="let progress of progressInfo">
+                            <span>{{progress.fileName}}</span>
+                            <span>{{progress.value}}%</span>
+                            <div id="progressbar">
+                                <mat-progress-bar mode="buffer" value={{progress.value}}>
+                                </mat-progress-bar>
+                            </div>
+                        </div>
+                    </mat-card>
+                    <mat-card id="box2">
+                        <button id="selectButton" mat-raised-button (click)="fileInput.click()">Seleccione los archivos a cargar</button>
+                        <input #fileInput type="file" hidden multiple (change)="selectFiles($event)" />
+                        <span *ngIf="fileName">{{fileName}}</span>
+                        <button id="uploadButton" mat-raised-button *ngIf="selectedFiles" [disabled]="!selectedFiles" (click)="uploadFiles()">
+                        Subir Archivos
+                    </button>
+                    </mat-card>
+                    <mat-card id="box3">
+                        <span>{{message}}</span>
+                    </mat-card>
+                    <mat-card id="box4">
+                        <mat-card-header>
+                            <mat-card-title>Lista de Archivos</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <ul>
+                                <li *ngFor="let file of fileInfos | async">
+                                    <a href="{{file.url}}">{{file.name}}</a>
+                                    <mat-icon (click)="deleteFile(file.name)">delete</mat-icon>
+                                </li>
+                            </ul>
+                        </mat-card-content>
+                    </mat-card>
+                </div> -->
 
                 <div class="col-12">
                     <mat-card>

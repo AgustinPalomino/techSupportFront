@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,6 +11,7 @@ import { Empresa } from 'src/app/modelos/empresa';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { Usuarios } from '../../../modelos/usuarios';
+import { HttpClient } from '@angular/common/http';
 
 
 /**
@@ -21,10 +21,10 @@ import { Usuarios } from '../../../modelos/usuarios';
 
 
 @Component({
-  selector: 'app-caso-soft',
-  templateUrl: './caso-soft.component.html'
+  selector: 'app-caso-adm',
+  templateUrl: './caso-adm.component.html'
 })
-export class CasoSoftComponent implements OnInit {
+export class CasoAdmComponent implements OnInit {
 
   caso = new Casos;
   fil = new FiltroEmpRef;
@@ -113,7 +113,7 @@ export class CasoSoftComponent implements OnInit {
 
   //Método para obtener los códigos de tipo casos software
   private obtenerTipoSoft() {
-    this.fil.codRef = 'CS00'; //******PENDIENTE FILTRAR POR EMPRESA SI ES NECESARIO */
+    this.fil.codRef = 'CA00'; //******PENDIENTE FILTRAR POR EMPRESA SI ES NECESARIO */
     //this.fil.empId = Number(sessionStorage.getItem('empresa'));
     this.apiService.traerReferenciasPorCodigo(this.fil.codRef).subscribe(res =>{
       let tipos = res as Referencia[]
@@ -175,6 +175,5 @@ export class CasoSoftComponent implements OnInit {
       console.log('Error al subir archivos: ',error);
     }
   }
-
 
 }
