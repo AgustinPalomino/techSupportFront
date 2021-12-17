@@ -50,7 +50,6 @@ export class CasoSoftComponent implements OnInit {
   }
   
   guardarCaso( form: NgForm ) {
-    console.log(this.caso);
     if( form.invalid ) {
       Swal.fire({
         title: "Registro",
@@ -170,6 +169,10 @@ export class CasoSoftComponent implements OnInit {
       });
       if (empId) formularioDeDatos.append('empId', empId);
       this.apiService.guardarAdjuntos(formularioDeDatos).subscribe(res => {
+        Swal.fire({
+          text: res.message,
+          icon: 'success'
+        });
       })
     } catch (error) {
       console.log('Error al subir archivos: ',error);

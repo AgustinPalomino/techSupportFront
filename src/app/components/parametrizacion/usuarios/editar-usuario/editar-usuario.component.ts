@@ -84,7 +84,7 @@ export class EditarUsuarioComponent implements OnInit {
          text: 'se actualizó correctamente',
          icon: 'success'
         });
-        this.router.navigate(['crear-empresa'])
+        this.router.navigate(['usuarios'])
       } else {
         Swal.showLoading();
         Swal.fire({

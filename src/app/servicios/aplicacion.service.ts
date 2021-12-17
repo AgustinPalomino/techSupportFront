@@ -121,8 +121,8 @@ export class AplicacionService {
   }
 
   //Metodo para Obtener los archivos
-  getFiles(){
-    return this.http.get(this.urlEndPoint+'files');
+  getFiles(idEmp: number){
+    return this.http.post(this.urlEndPoint+`files/${idEmp}`, idEmp);
   }
 
   //Metodo para borrar los archivos cargados

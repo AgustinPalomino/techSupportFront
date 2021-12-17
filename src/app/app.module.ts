@@ -47,6 +47,7 @@ import { AsignarCasosComponent } from './components/casos/asignar-casos/asignar-
 import { VerCasoComponent } from './components/casos/ver-caso/ver-caso.component';
 import { CasoAdmComponent } from './components/casos/caso-adm/caso-adm.component';
 import { CasoHardComponent } from './components/casos/caso-hard/caso-hard.component';
+import { EditarCasoComponent } from './components/casos/editar-caso/editar-caso.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CasoHardComponent } from './components/casos/caso-hard/caso-hard.compon
     VerCasoComponent,
     CasoAdmComponent,
     CasoHardComponent,
+    EditarCasoComponent,
   ],
   imports: [
     BrowserModule,

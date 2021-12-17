@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Select } from 'src/app/interfases/Select';
 import { Casos } from 'src/app/modelos/casos';
 import { Empresa } from 'src/app/modelos/empresa';
@@ -12,6 +13,7 @@ import { Usuarios } from 'src/app/modelos/usuarios';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from 'src/app/servicios/util.service';
 import Swal from 'sweetalert2';
+import { Adjuntos } from '../../../modelos/adjuntos';
 
 
 /**
@@ -42,6 +44,7 @@ export class VerCasoComponent implements OnInit {
   idEmp: string = '';
   archivoCapturado = '';
   usr = new Usuarios;
+  fileInfos: Observable<any> | undefined;
 
   constructor( private route: ActivatedRoute, private sanitizer: DomSanitizer, public util: UtilService, 
     private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
@@ -53,6 +56,13 @@ export class VerCasoComponent implements OnInit {
     this.buscarCasoPorId(this.cod);
     this.obtenerSeveridad();
     this.obtenerTipoSoft();
+    
+    try {
+      let empId = Number(sessionStorage.getItem('empresa'));
+      this.fileInfos = this.apiService.getFiles(empId);
+    } catch (error) {
+      console.log("error ", error)
+    }
   }
 
   buscarCasoPorId(id: number) {
@@ -191,4 +201,5 @@ export class VerCasoComponent implements OnInit {
     }
   }
 
+  
 }

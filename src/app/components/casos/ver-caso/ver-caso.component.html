@@ -1,5 +1,5 @@
 <div class="card" style="border-radius: 10px 10px 0 0;">
-    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Detalles del caso
+    <h5 class="card-header letravino" style="background-color: rgb(241, 219, 219);">Ver Detalles del caso
         <div class="float-right letravino">
             <button (click)="util.paginaInicio()" class="btn btn-info mr-1">
             <i class="fa fa-home"></i>
@@ -47,6 +47,12 @@
                 <div class="col-md-12 form-group">
                     <label class="form-label" style="color: black;">Adjuntos</label>
                     <div class="table-responsive">
+                        <!-- <ul>
+                            <tbody>
+                                <li *ngFor="let arch of fileInfos | async | paginate: { itemsPerPage: 8, currentPage: page }">
+                                    <a href="{{arch.url}}">{{arch.name}} </a>
+                                </li>
+                        </ul> -->
                         <table class="table table-sm table caption-top">
                             <tbody>
                                 <tr *ngFor="let arch of caso.casAdjuntos| paginate: { itemsPerPage: 8, currentPage: page }">

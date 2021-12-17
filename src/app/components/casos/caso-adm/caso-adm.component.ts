@@ -50,7 +50,6 @@ export class CasoAdmComponent implements OnInit {
   }
   
   guardarCaso( form: NgForm ) {
-    console.log(this.caso);
     if( form.invalid ) {
       Swal.fire({
         title: "Registro",
@@ -66,6 +65,7 @@ export class CasoAdmComponent implements OnInit {
         this.caso.usuario = usuario;
         });
 
+    if (this.caso.casAdjuntos.length = 0) this.caso.casAdjuntos = [];
     this.caso.casCategoria = 'C01';
     this.caso.casFechaIni = new Date();
     this.caso.casEstado = 'E01';
