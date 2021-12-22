@@ -26,7 +26,7 @@
                 <div class="col-md-12 form-group">
                     <h6 class="letravino">Severidad</h6><br>
                     <div class="container">
-                        <mat-radio-group disabled name="severidad" [(ngModel)]="caso.casSeveridad">
+                        <mat-radio-group disabled name="severidad" [(ngModel)]="casoC.severidad">
                             <mat-radio-button *ngFor="let sev of severidads" [value]="sev.valor" style="margin: 15px">
                                 {{sev.etiqueta}}
                             </mat-radio-button>
@@ -37,28 +37,28 @@
                 <div class="col-md-12 form-group">
                     <label class="form-label" style="color: black;">Subject</label>
                     <span *ngIf="f.submitted && f.controls['subject'].errors" class="text-danger animated fadeIn"> es requerido</span>
-                    <input disabled type="text" class="form-control" placeholder="Ingrese el Subject" [(ngModel)]="caso.casSubject" name="subject" required minlength="10">
+                    <input disabled type="text" class="form-control" placeholder="Ingrese el Subject" [(ngModel)]="casoC.asunto" name="subject" required minlength="10">
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="form-label" style="color: black;">Descripción</label>
                     <span *ngIf="f.submitted && f.controls['descripcion'].errors" class="text-danger animated fadeIn"> es requerida</span>
-                    <input type="text" disabled class="form-control" placeholder="Ingrese la Descripción" [(ngModel)]="caso.casDescripcion" name="descripcion" required>
+                    <input type="text" disabled class="form-control" placeholder="Ingrese la Descripción" [(ngModel)]="casoC.descripcion" name="descripcion" required>
                 </div>
                 <div class="col-md-12 form-group">
                     <label class="form-label" style="color: black;">Adjuntos</label>
                     <div class="table-responsive">
-                        <!-- <ul>
+                        <ul>
                             <tbody>
-                                <li *ngFor="let arch of fileInfos | async | paginate: { itemsPerPage: 8, currentPage: page }">
+                                <li *ngFor="let arch of casoC.adjuntos | paginate: { itemsPerPage: 8, currentPage: page }">
                                     <a href="{{arch.url}}">{{arch.name}} </a>
                                 </li>
-                        </ul> -->
-                        <table class="table table-sm table caption-top">
+                        </ul>
+                        <!-- <table class="table table-sm table caption-top">
                             <tbody>
-                                <tr *ngFor="let arch of caso.casAdjuntos| paginate: { itemsPerPage: 8, currentPage: page }">
-                                    <th scope="row">{{ arch }}</th>
+                                <tr *ngFor="let arch of casoC.adjuntos| paginate: { itemsPerPage: 8, currentPage: page }">
+                                    <th scope="row">{{ arch.url }}</th>
                                 </tr>
-                        </table>
+                        </table> -->
                     </div>
                 </div>
             </form>

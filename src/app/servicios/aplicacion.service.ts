@@ -135,6 +135,11 @@ export class AplicacionService {
     return this.http.post<any>(this.urlEndPoint+'usuario/autenticar', usuario)
   }
 
+  //POST para traer un caso con los links de los archivos adjuntos
+  traerCasoConAdjuntos(id: number) {
+    return this.http.post<any>(this.urlEndPoint+`casos/poridAdj/${id}`, id)
+  }
+
   //POST para buscar casos por usuario
   traerCasosPorUsr(id: number) {
     return this.http.post<any>(this.urlEndPoint+`casos/buscarporusr/${id}`, id)

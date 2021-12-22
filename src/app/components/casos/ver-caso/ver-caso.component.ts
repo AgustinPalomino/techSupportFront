@@ -14,6 +14,7 @@ import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from 'src/app/servicios/util.service';
 import Swal from 'sweetalert2';
 import { Adjuntos } from '../../../modelos/adjuntos';
+import { CasoConAdjuntos } from '../../../modelos/casoConAdjuntos';
 
 
 /**
@@ -31,6 +32,7 @@ export class VerCasoComponent implements OnInit {
   public page!: number;
   cod: any;
   caso = new Casos;
+  casoC = new CasoConAdjuntos;
   fil = new FiltroEmpRef;
   tipos: Select [] = [];
   tipo: any;
@@ -66,10 +68,10 @@ export class VerCasoComponent implements OnInit {
   }
 
   buscarCasoPorId(id: number) {
-    this.apiService.traerCasoPorId(id).subscribe(res => {
-      let caso = res as Casos;
-      this.caso = caso; 
-      console.log(res)
+    this.apiService.traerCasoConAdjuntos(id).subscribe(res => {
+      let caso = res as CasoConAdjuntos;
+      this.casoC = caso; 
+      console.log(this.casoC)
     })
   }
 
