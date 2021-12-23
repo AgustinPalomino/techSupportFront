@@ -5,5 +5,5 @@
 
 export class Adjuntos {
     name!: string;
-    url!: string;
+    url!: any;
 }

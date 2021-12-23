@@ -17,4 +17,5 @@ export class Casos {
     casFechaFinalizado!: Date;
     casEstado!: string;
     casCategoria!: string;
+    terminado: boolean = false;
 }

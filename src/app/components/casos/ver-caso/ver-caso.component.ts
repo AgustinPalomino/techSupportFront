@@ -13,8 +13,8 @@ import { Usuarios } from 'src/app/modelos/usuarios';
 import { AplicacionService } from 'src/app/servicios/aplicacion.service';
 import { UtilService } from 'src/app/servicios/util.service';
 import Swal from 'sweetalert2';
-import { Adjuntos } from '../../../modelos/adjuntos';
 import { CasoConAdjuntos } from '../../../modelos/casoConAdjuntos';
+import { Adjuntos } from '../../../modelos/adjuntos';
 
 
 /**
@@ -33,6 +33,7 @@ export class VerCasoComponent implements OnInit {
   cod: any;
   caso = new Casos;
   casoC = new CasoConAdjuntos;
+  public cas = new Adjuntos();
   fil = new FiltroEmpRef;
   tipos: Select [] = [];
   tipo: any;
@@ -47,6 +48,7 @@ export class VerCasoComponent implements OnInit {
   archivoCapturado = '';
   usr = new Usuarios;
   fileInfos: Observable<any> | undefined;
+  urlSeg: any;
 
   constructor( private route: ActivatedRoute, private sanitizer: DomSanitizer, public util: UtilService, 
     private router: Router, private http: HttpClient, public apiService: AplicacionService ) { }
@@ -71,8 +73,20 @@ export class VerCasoComponent implements OnInit {
     this.apiService.traerCasoConAdjuntos(id).subscribe(res => {
       let caso = res as CasoConAdjuntos;
       this.casoC = caso; 
-      console.log(this.casoC)
-    })
+      console.log(this.casoC);
+      //this.asegurar();
+      this.urlSeg = this.sanitizer.bypassSecurityTrustUrl("C:/Proyectos/TechSupportBack/techsupport/1/Screenshot_24.png");
+    });
+  }
+
+  asegurar() {
+    console.log("Estoy en asegurar",this.casoC.adjuntos.length)
+    for (let i = 0; i < this.casoC.adjuntos.length; i++) {
+      console.log("Dentro del for");
+      this.casoC.adjuntos[i].url = this.sanitizer.bypassSecurityTrustUrl(this.casoC.adjuntos[i].url);
+      console.log(this.casoC.adjuntos[i].url);
+    }
+    console.log("Después del for")
   }
 
   guardarCaso( form: NgForm ) {
